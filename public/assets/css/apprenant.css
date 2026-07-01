@@ -1,0 +1,551 @@
+/*==================================================
+            GENERAL
+===================================================*/
+
+body{
+    background:#F8FAFC;
+    font-family:'Poppins',sans-serif;
+    color:#1F2937;
+    line-height:1.7;
+    overflow-x:hidden;
+}
+
+
+a{
+    text-decoration:none;
+}
+
+img{
+    max-width:100%;
+}
+
+section{
+    padding:60px 0;
+}
+
+/*==================================================
+                NAVBAR
+===================================================*/
+
+.navbar{
+    background:#fff;
+
+    height:85px;
+
+    box-shadow:0 8px 35px rgba(31,41,55,.08);
+
+    transition:.4s;
+}
+
+.navbar-brand{
+    font-size:30px;
+
+    font-weight:700;
+
+    color:#6D28D9!important;
+}
+
+.navbar-nav .nav-link{
+    font-weight:600;
+
+    margin:0 12px;
+    color:#374151;
+
+    position:relative;
+}
+.navbar-nav .nav-link::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:-8px;
+
+    width:0;
+
+    height:3px;
+
+    background:#525FE1;
+
+    transition:.3s;
+
+}
+
+.navbar-nav .nav-link:hover::after{
+
+    width:100%;
+
+}
+.navbar-nav .nav-link:hover{
+    color:#6D28D9;
+}
+
+.dropdown-toggle{
+    border-radius:30px;
+}
+
+.form-control{
+    border-radius:30px;
+}
+
+/*==================================================
+                HERO
+===================================================*/
+
+.hero-section{
+
+    padding:90px 0;
+
+    background:linear-gradient(135deg,#F3E8FF,#FFFFFF);
+
+}
+
+.hero-title{
+
+    font-size:55px;
+
+    font-weight:700;
+
+    color:#0B104A;
+
+    line-height:1.2;
+
+}
+
+.hero-text{
+
+    font-size:18px;
+
+    color:#6B7280;
+
+    max-width:600px;
+
+}
+
+.hero-image{
+    max-height:450px;
+}
+
+.hero-search{
+
+    margin-top:35px;
+
+}
+.hero-search input{
+
+    height:60px;
+
+    border:none;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+.hero-search button{
+
+    background:#525FE1;
+
+    border:none;
+
+}
+.hero-search button:hover{
+
+    background:#F26B65;
+
+}
+
+/*==================================================
+            CATEGORIES
+===================================================*/
+
+.category-section{
+    padding:35px 0;
+}
+
+.category-btn{
+
+    background:#fff;
+
+    padding:13px 28px;
+
+    border-radius:40px;
+
+    font-weight:600;
+
+    transition:.35s;
+
+    border:1px solid #ECECEC;
+
+}
+
+.category-btn:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 10px 20px rgba(82,95,225,.18);
+
+}
+
+.category-btn.active{
+
+    background:#6D28D9;
+
+    color:#fff;
+
+
+}
+
+/*==================================================
+            TITRES
+===================================================*/
+
+h2{
+
+    font-weight:700;
+
+}
+
+/*==================================================
+            COURSE CARD
+===================================================*/
+
+.course-card{
+
+    background:#fff;
+
+    border-radius:22px;
+
+    overflow:hidden;
+
+    transition:.4s;
+
+    border:none;
+
+    box-shadow:0 12px 25px rgba(0,0,0,.07);
+
+}
+.course-card:hover{
+
+    transform:translateY(-12px);
+
+    box-shadow:0 20px 50px rgba(82,95,225,.20);
+
+}
+
+.course-image{
+
+    height:250px;
+
+    object-fit:cover;
+
+    transition:.5s;
+    width: 100%;
+
+}
+
+.course-card:hover .course-image{
+
+    transform:scale(1.12);
+
+}
+
+.course-body{
+
+    padding:30px;
+
+}
+.course-body h4{
+
+    font-size:24px;
+
+    color:#0B104A;
+
+}
+.course-body p{
+
+    color:#6B7280;
+
+    font-size:15px;
+
+}
+
+.course-category{
+
+    background:#EEF2FF;
+
+    color:#525FE1;
+
+    font-weight:700;
+
+    padding:8px 18px;
+
+    font-size:20px;
+
+
+}
+
+.course-body h4{
+
+    font-size:23px;
+
+    margin-bottom:15px;
+
+    font-weight:700;
+
+}
+
+.course-body p{
+
+    color:#777;
+
+    margin-bottom:25px;
+
+}
+
+/*==================================================
+            FOOTER CARD
+===================================================*/
+
+.course-footer{
+
+    border-top:1px solid #F2F2F2;
+
+    padding-top:18px;
+
+    margin-top:20px;
+
+}
+
+.course-footer a{
+
+    font-weight:600;
+
+
+    color:#6D28D9;
+
+}
+
+.course-footer a:hover{
+
+    color:#5B21B6;
+
+}
+
+/*==================================================
+            BUTTONS
+===================================================*/
+
+.btn-primary{
+
+    background:#525FE1;
+
+    border:none;
+
+    padding:14px 35px;
+
+    font-weight:600;
+
+    transition:.35s;
+
+}
+.btn-primary:hover{
+
+    background:#F26B65;
+
+    transform:translateY(-3px);
+
+}
+.btn-outline-primary{
+
+    border-radius:30px;
+    color:#6D28D9;
+    border-color:#6D28D9;
+
+}
+
+.btn-outline-primary:hover{
+
+    background:#6D28D9;
+    border-color:#6D28D9;
+
+}
+
+/*==================================================
+            FOOTER
+===================================================*/
+
+footer{
+
+    margin-top:80px;
+
+}
+
+footer h5{
+
+    font-weight:700;
+
+}
+
+footer ul li{
+
+    margin-bottom:10px;
+
+}
+
+footer a:hover{
+
+    color:#F59E0B !important;
+
+}
+
+/*==================================================
+            BADGES
+===================================================*/
+
+.badge{
+
+    border-radius:20px;
+
+    padding:8px 16px;
+    background:#F59E0B;
+    color:white;
+
+}
+
+/*==================================================
+        INPUTS
+===================================================*/
+
+input:focus{
+
+    box-shadow:0 0 0 .2rem rgba(109,40,217,.15)!important;
+
+    border-color:#6D28D9;
+
+
+}
+
+.course-card{
+
+    animation:fadeUp .6s ease;
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/*==================================================
+        RESPONSIVE
+===================================================*/
+
+@media(max-width:992px){
+
+.hero-title{
+
+    font-size:35px;
+
+    text-align:center;
+
+}
+
+.hero-text{
+
+    text-align:center;
+
+}
+
+.hero-search{
+
+    margin-bottom:40px;
+
+}
+
+.hero-image{
+
+    margin-top:30px;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.course-image{
+
+    height:200px;
+
+}
+
+.hero-title{
+
+    font-size:30px;
+
+}
+
+.navbar-brand{
+
+    font-size:24px;
+
+}
+
+}
+
+@media(max-width:576px){
+
+.hero-title{
+
+    font-size:26px;
+
+}
+
+.course-body{
+
+    padding:18px;
+
+}
+
+.course-body h4{
+
+    font-size:20px;
+
+}
+
+/* Style personnalisé pour ressembler aux onglets HP LIFE */
+.custom-tabs .nav-link {
+    border: none !important;
+    color: #6c757d !important;
+    font-weight: 500;
+    padding: 10px 0;
+    margin-right: 25px;
+    background: none !important;
+}
+
+.custom-tabs .nav-link.active {
+    color: #0056b3 !important;
+    border-bottom: 3px solid #0056b3 !important;
+    font-weight: 600;
+}
+
+.custom-tabs .nav-link:hover {
+    color: #0056b3 !important;
+}
+}
