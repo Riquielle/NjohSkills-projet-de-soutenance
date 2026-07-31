@@ -7,6 +7,7 @@ use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Formation;
 
 class User extends Authenticatable
 {
@@ -23,6 +24,14 @@ class User extends Authenticatable
         'email',
         'password',
         'role',
+
+        'photo',
+        'date_naissance',
+        'sexe',
+        'adresse',
+        'ville',
+        'pays',
+        'bio',
     ];
 
     /**
@@ -49,8 +58,9 @@ class User extends Authenticatable
     }
     public function formateur()
     {
-    return $this->hasOne(Formateur::class);
+        return $this->hasOne(Formateur::class);
     }
+
     public function inscriptions()
     {
         return $this->hasMany(Inscription::class);
@@ -59,5 +69,21 @@ class User extends Authenticatable
     public function paiements()
     {
         return $this->hasMany(Paiement::class);
+    }
+
+    public function ressourceProgressions()
+    {
+        return $this->hasMany(RessourceProgression::class);
+    }
+    
+    public function tentativesQuiz()
+    {
+        return $this->hasMany(QuizTentative::class);
+    }
+
+    public function formations()
+    {
+        return $this->belongsToMany(Formation::class, 'inscriptions')
+            ->withPivot('progression');
     }
 }

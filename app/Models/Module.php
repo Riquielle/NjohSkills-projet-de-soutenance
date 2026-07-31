@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class Module extends Model
 {
 
@@ -18,9 +19,15 @@ class Module extends Model
     {
         return $this->belongsTo(Formation::class);
     }
+    
     public function lecons()
     {
         return $this->hasMany(Lecon::class)
                     ->orderBy('ordre');
+    }
+
+    public function quiz()
+    {
+        return $this->hasOne(Quiz::class);
     }
 }

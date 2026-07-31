@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Formation;
 use App\Models\Inscription;
 use App\Models\paiement;
+use Illuminate\Support\Str;
 
 use Illuminate\Http\Request;
 

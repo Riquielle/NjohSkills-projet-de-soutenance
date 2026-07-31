@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('formations', function (Blueprint $table) {
             // Un champ text (long) qui peut être vide au départ
-            $table->text('apercu')->nullable()->after('titre_apercu');
+            $table->text('apercu')->nullable();
         });
     }
 

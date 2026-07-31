@@ -17,14 +17,7 @@ return new class extends Migration
               ->constrained()
               ->onDelete('cascade');
 
-            $table->enum('type',[
-                'video',
-                'pdf',
-                'audio',
-                'document',
-                'image',
-                'zip'
-            ]);
+            $table->string('type', 500);
 
             $table->string('nom');
 

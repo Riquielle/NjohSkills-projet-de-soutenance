@@ -66,7 +66,109 @@
                     </div>
                     
                     <div class="tab-pane fade" id="lecons" role="tabpanel">
-                        <p class="text-secondary">Les leçons et modules d'apprentissage seront listés ici.</p>
+
+                        @forelse($formation->modules as $index => $module)
+
+                            <div class="accordion mb-3" id="accordionModule{{ $module->id }}">
+
+                                <div class="accordion-item border rounded shadow-sm">
+
+                                    <h2 class="accordion-header">
+
+                                        <button class="accordion-button @if($index!=0) collapsed @endif"
+                                                type="button"
+                                                data-bs-toggle="collapse"
+                                                data-bs-target="#collapse{{ $module->id }}">
+
+                                            <strong>
+
+                                                Module {{ $module->ordre }}
+
+                                                :
+
+                                                {{ $module->titre }}
+
+                                            </strong>
+
+                                        </button>
+
+                                    </h2>
+
+                                    <div id="collapse{{ $module->id }}"
+                                        class="accordion-collapse collapse @if($index==0) show @endif">
+
+                                        <div class="accordion-body">
+
+                                            <p class="text-muted mb-3">
+
+                                                {{ $module->objectif }}
+
+                                            </p>
+
+                                            @if($module->lecons->count())
+
+                                                <ul class="list-group">
+
+                                                    @foreach($module->lecons as $lecon)
+
+                                                        <li class="list-group-item">
+
+                                                            <div>
+
+                                                                <i class="fas fa-book-open text-primary me-2"></i>
+
+                                                                <strong>
+
+                                                                    {{ $lecon->ordre }}.
+
+                                                                    {{ $lecon->titre }}
+
+                                                                </strong>
+
+                                                                <br>
+
+                                                                <small class="text-muted">
+
+                                                                    {{ $lecon->description }}
+
+                                                                </small>
+
+                                                            </div>
+
+                                                        </li>
+
+                                                    @endforeach
+
+                                                </ul>
+
+                                            @else
+
+                                                <div class="alert alert-warning mb-0">
+
+                                                    Aucune leçon disponible pour ce module.
+
+                                                </div>
+
+                                            @endif
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        @empty
+
+                            <div class="alert alert-info">
+
+                                Aucun module n'a encore été ajouté.
+
+                            </div>
+
+                        @endforelse
+
                     </div>
                 </div>
             </div>
@@ -131,23 +233,23 @@
                                 </a>
                             @elseif($inscription->progression == 0)
 
-                                <a href="{{ route('ma_Formation', $formation->id) }}"
+                                <a href="{{ route('ma_formation', $formation->id) }}"
                                 class="btn btn-success btn-lg">
                                     Commencer la formation
                                 </a>
 
                             @elseif($inscription->progression < 100)
 
-                                <a href="{{ route('ma_Formation', $formation->id) }}"
+                                <a href="{{ route('ma_formation', $formation->id) }}"
                                 class="btn btn-warning btn-lg">
                                     Continuer la formation
                                 </a>
 
                             @else
 
-                                <a href="{{ route('#', $formation->id) }}"
+                                <a href="{{ route('ma_formation', $formation->id) }}"
                                 class="btn btn-info btn-lg">
-                                    Télécharger le certificat
+                                    Formation terminée
                                 </a>
 
                             @endif

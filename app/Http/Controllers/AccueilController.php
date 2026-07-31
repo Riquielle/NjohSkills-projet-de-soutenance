@@ -2,16 +2,30 @@
 
 namespace App\Http\Controllers;
 use App\Models\Formation;
+use App\Models\User;
+
+use App\Models\Formateur;
 use Illuminate\Http\Request;
 
 class AccueilController extends Controller
 {
     public function index()
-    {   // Récupère toutes les formations (ou filtrez selon vos besoins, par exemple avec ->latest()->get())
+    {   
+
+        $nombreApprenants = User::where('role','apprenant')->count();
+
+        $nombreFormations = Formation::where('statut','publie')->count();
+
+        $nombreFormateurs = Formateur::count();
+        
+    // Récupère toutes les formations (ou filtrez selon vos besoins, par exemple avec ->latest()->get())
         $formations = Formation::with('formateur')->get(); 
 
         // On transmet la variable $formations à la vue
-        return view('Accueil.index', compact('formations'));
+        return view('Accueil.index', compact('formations',
+        'nombreApprenants',
+        'nombreFormations',
+        'nombreFormateurs'));
         
     }
 

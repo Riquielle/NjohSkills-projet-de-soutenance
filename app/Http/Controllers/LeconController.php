@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class LeconController extends Controller
 {
-    public function index(Module $module)
+    public function lecons(Module $module)
     {
         $lecons = $module->lecons()
                          ->orderBy('ordre')
@@ -35,6 +35,8 @@ class LeconController extends Controller
             'description' => $request->description,
             'ordre' => $request->ordre,
         ]);
+
+        $formation->verifierPublication();
 
         return redirect()
                 ->back()

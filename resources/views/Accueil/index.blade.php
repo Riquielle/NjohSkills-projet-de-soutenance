@@ -5,20 +5,40 @@
 		<section class="home_bg hb_height" style="background-image: url(assets/img/bg/home-bg.jpg);  background-size:cover; background-position: center center;">
 			<div class="container">
 				<div class="row">
-				  <div class="col-lg-6 col-sm-12 col-xs-12">
-					<div class="hero-text ht_top">
-						<h1>Développez vos<span> compétences pratiques </span> avec des formations professionnelles</h1>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, consectetur adipiscing elit tempor ut labore</p>
-					</div>
-									
+				  <div class="col-lg-7 col-sm-10 col-xs-12">
+						<div class="hero-text ht_top"> 
+							<h1>Développez vos<span> compétences pratiques </span> avec des formations professionnelles</h1> 
+							<p>AvecSkillOra, aprennez, pratiquez et entreprenez</p> </div>
 				  </div><!--- END COL -->
 				  <div class="col-lg-6 col-sm-12 col-xs-12">
 					<div class="hero-text-img">
 						<img src="assets/img/home-img2.png" class="img-fluid" alt="" />
 						<div class="home_ps">
+
 							<span class="ti-user"></span>
-							<h2>4500+</h2>
-							<p>Active student</p>
+
+							<h2>
+								{{ $nombreApprenants }}
+							</h2>
+
+							<p>
+								Apprenants inscrits
+							</p>
+
+						</div>
+
+						<div class="home_ps">
+
+							<span class="ti-book"></span>
+
+							<h2>
+								{{ $nombreFormations }}
+							</h2>
+
+							<p>
+								Formations pratiques
+							</p>
+
 						</div>
 					</div>					
 				  </div><!--- END COL -->						  
@@ -29,132 +49,178 @@
 
 		<!-- START COUNTER -->
 		<section class="count_area counter_feature">
+
 			<div class="container">
+
 				<div class="row">
+
+
 					<div class="col-lg-3 col-sm-6 col-xs-12">
+
 						<div class="single-counter">
-							<span class="ti-folder sc_one"></span>
-							<h2 class="counter-num">134</h2>
-							<p>Our Online Course</p>
-						</div>							
+
+							<span class="ti-book sc_one"></span>
+
+							<h2 class="counter-num">
+								{{ $nombreFormations }}
+							</h2>
+
+							<p>
+								Formations pratiques
+							</p>
+
+						</div>
+
 					</div>
+
+
+					
+
+
 					<div class="col-lg-3 col-sm-6 col-xs-12">
+
 						<div class="single-counter">
-							<span class="ti-medall-alt sc_two"></span>
-							<h2 class="counter-num">299</h2>
-							<p>Academic Programs</p>
-						</div>
-					</div><!-- END COL -->
-					<div class="col-lg-3 col-sm-6 col-xs-12">
-						<div class="single-counter">
+
 							<span class="ti-id-badge sc_three"></span>
-							<h2 class="counter-num">684</h2>
-							<p>Certified Students</p>
+
+							<h2 class="counter-num">
+								{{ $nombreFormateurs }}
+							</h2>
+
+							<p>
+								Apprenants accompagnés
+							</p>
+
 						</div>
-					</div><!-- END COL -->
+
+					</div>
+
+
 					<div class="col-lg-3 col-sm-6 col-xs-12">
+
 						<div class="single-counter">
+
 							<span class="ti-user sc_four"></span>
-							<h2 class="counter-num">941</h2>
-							<p>Enrolled Students</p>
+
+							<h2 class="counter-num">
+								{{ $nombreFormateurs }}
+							</h2>
+
+							<p>
+								Formateurs experts
+							</p>
+
 						</div>
-					</div><!-- END COL -->						
-				</div><!--- END ROW -->
-			</div><!--- END CONTAINER -->		
+
+					</div>
+
+
+				</div>
+
+			</div>
+
 		</section>
 		<!-- END COUNTER -->
 
 	<!-- START CATEGORY -->
-	<section class="top_cat__area section-padding" style="background-image: url(assets/img/bg/shape-1.png);  background-size:cover; background-position: center center;">
-		<div class="container">									
-			<div class="section-title text-center">
-				<h2>Commence ta journée avec nous</h2>
-				<p>We offer a brand new approach to the most basic learning paradigms. Choose from a wide range of learning options and gain new skills! Our school is know.</p>
-			</div>						
-			<div class="row">					
-				<div class="col-lg-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s" data-wow-offset="0">
-					<div class="single_tp">
-						<span class="sc_one">01</span>
-						<h3>Formateurs <br />Expert</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur notted adipisicing elit ut labore.</p>
-					</div>
-				</div><!-- END COL -->			
-				<div class="col-lg-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">
-					<div class="single_tp">
-						<span class="sc_two">02</span>
-						<h3>Formations de<br />qualité</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur notted adipisicing elit ut labore.</p>
-					</div>
-				</div><!-- END COL -->			
-				<div class="col-lg-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s" data-wow-offset="0">
-					<div class="single_tp">
-						<span class="sc_three">03</span>
-						<h3>Remote <br />Learning</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur notted adipisicing elit ut labore.</p>
-					</div>
-				</div><!-- END COL -->	
-				<div class="col-lg-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s" data-wow-offset="0">
-					<div class="single_tp">
-						<span class="sc_four">04</span>
-						<h3>Life Time <br />Support</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur notted adipisicing elit ut labore.</p>
-					</div>
-				</div><!-- END COL -->							
-			</div><!-- END ROW -->
-		</div><!--- END CONTAINER -->
-	</section>
+	<section class="top_cat__area section-padding" style="background-image: url(assets/img/bg/shape-1.png); background-size:cover; background-position: center center;">
+			<div class="container">                                 
+				<div class="section-title text-center">
+					<h2>Transformez votre passion en un métier d'avenir</h2>
+					<p>Découvrez une nouvelle manière d'apprendre les métiers manuels et créatifs. Maîtrisez la couture, la coiffure, la cosmétique et bien plus grâce à des cours vidéo ultra-pratiques pas-à-pas.</p>
+				</div>                                      
+				<div class="row">                   
+					<div class="col-lg-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s" data-wow-offset="0">
+						<div class="single_tp">
+							<span class="sc_one">01</span>
+							<h3>Maîtres <br />Artisans</h3>
+							<p>Apprenez aux côtés de professionnels passionnés et reconnus dans leur domaine.</p>
+						</div>
+					</div><!-- END COL -->          
+					<div class="col-lg-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">
+						<div class="single_tp">
+							<span class="sc_two">02</span>
+							<h3>Pratique <br />à 100%</h3>
+							<p>Des démonstrations vidéo en gros plan pour reproduire chaque geste avec précision.</p>
+						</div>
+					</div><!-- END COL -->          
+					<div class="col-lg-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s" data-wow-offset="0">
+						<div class="single_tp">
+							<span class="sc_three">03</span>
+							<h3>Apprentissage <br />Flexible</h3>
+							<p>Formez-vous depuis chez vous, à votre rythme, sur votre smartphone ou votre PC.</p>
+						</div>
+					</div><!-- END COL -->  
+					<div class="col-lg-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s" data-wow-offset="0">
+						<div class="single_tp">
+							<span class="sc_four">04</span>
+							<h3>Accompagnement <br />Continu</h3>
+							<p>Bénéficiez de retours personnalisés de vos formateurs sur vos réalisations.</p>
+						</div>
+					</div><!-- END COL -->                          
+				</div><!-- END ROW -->
+			</div><!--- END CONTAINER -->
+		</section>
+		<!-- END CATEGORY --> 
 	<!-- END CATEGORY -->		
 		
 	<!-- START ABOUT US -->
-	<section class="ab_area section-padding">
-		<div class="container">									
-			<div class="row">								
-				<div class="col-lg-6 col-sm-12 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s" data-wow-offset="0">
-					<div class="ab_img">
-						<img src="assets/img/about1.png" class="img-fluid" alt="image">
-					</div>
-				</div><!--- END COL -->						
-				<div class="col-lg-6 col-sm-12 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
-					<div class="ab_content">
-						<h2>We Are Providing The Online Course In Global World</h2>
-						<p>We offer a brand new approach to the most basic learning paradigms. Choose from a wide range of learning options and gain new skills! Our school is know.</p>
-						<p>We offer a brand new approach to the most basic learning paradigms. Choose from a wide range of learning options and gain new skills! Our school is know.</p>
-						<ul>
-							<li><span class="ti-check"></span> Get access to <b>12,000+</b> of our top courses</li>
-							<li><span class="ti-check"></span> Popular topic to learn now in our online courses for student</li>
-							<li><span class="ti-check"></span> Find the right instructor for you</li>
-						</ul>
-						<a class="btn_one" href="course.html">View All Courses <i class="ti-arrow-top-right"></i></a>
-					</div>
-				</div><!--- END COL -->							  
-			</div><!--- END ROW -->
-		</div><!--- END CONTAINER -->
-	</section>
+		<section class="ab_area section-padding">
+			<div class="container">                                 
+				<div class="row">                               
+					<div class="col-lg-6 col-sm-12 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s" data-wow-offset="0">
+						<div class="ab_img">
+							<img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=800&q=80" class="img-fluid" alt="Formation pratique couture et mode">
+						</div>
+					</div><!--- END COL -->                     
+					<div class="col-lg-6 col-sm-12 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
+						<div class="ab_content">
+							<h2>La plateforme de référence pour maîtriser les métiers de la beauté et du style</h2>
+							<p>Nous révolutionnons l'apprentissage des compétences pratiques. Que vous souhaitiez ouvrir votre salon de coiffure, lancer votre marque de vêtements ou fabriquer vos propres cosmétiques naturels, nous vous guidons étape par étape.</p>
+							<p>Nos formations combinent théorie essentielle, exercices pratiques concrets et fiches techniques téléchargeables pour vous garantir une maîtrise professionnelle immédiate.</p>
+							<ul>
+								<li><span class="ti-check"></span> Accédez à plus de <b>120+</b> modules pratiques (couture, coiffure, esthétique...)</li>
+								<li><span class="ti-check"></span> Patrons, recettes et fiches techniques téléchargeables</li>
+								<li><span class="ti-check"></span> Attestation de suivi et conseils pour lancer votre propre activité</li>
+							</ul>
+							<a class="btn_one" href="course.html">Découvrir les formations <i class="ti-arrow-top-right"></i></a>
+						</div>
+					</div><!--- END COL -->                         
+				</div><!--- END ROW -->
+			</div><!--- END CONTAINER -->
+		</section>
 	<!-- END ABOUT US -->	
 	
 	<!-- START CATEGORY -->
 	<section class="top_cat__area section-padding" style="background-image: url(assets/img/bg/section-2.jpg);  background-size:cover; background-position: center center;">
 		<div class="container">									
+			
+
 			<div class="section-title text-center">
-				<h2>Find out by popular Categories</h2>
-				<p>We offer a brand new approach to the most basic learning paradigms. Choose from a wide range of learning options and gain new skills! Our school is know.</p>
+
+				<h2>
+					Découvrez les compétences les plus demandées
+				</h2>
+
+				<p>
+					Avec SkillOra, développez des compétences pratiques,
+					apprenez un métier et préparez-vous à créer votre propre activité.
+					Choisissez une formation adaptée à vos objectifs professionnels.
+				</p>
+
 			</div>						
 			<div class="row">													
 				<div class="col-lg-12 col-sm-12 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
 					<div class="cat_list">
 						<ul>
-							<li><a href="#"><img src="assets/img/e1.png" alt="category-image" /> Digital Marketing</a></li>
-							<li><a href="#"><img src="assets/img/e2.png" alt="category-image" /> UI/UX Design</a></li>
-							<li><a href="#"><img src="assets/img/e3.png" alt="category-image" /> 3D Visual Design</a></li>
-							<li><a href="#"><img src="assets/img/e4.png" alt="category-image" /> Content Marketing</a></li>
-							<li><a href="#"><img src="assets/img/e5.png" alt="category-image" /> Photography</a></li>
-							<li><a href="#"><img src="assets/img/e6.png" alt="category-image" /> Photo Lifestyle</a></li>
-							<li><a href="#"><img src="assets/img/e7.png" alt="category-image" /> Art & Design</a></li>
-							<li><a href="#"><img src="assets/img/e8.png" alt="category-image" /> Finance & Banking</a></li>
-							<li><a href="#"><img src="assets/img/e9.png" alt="category-image" /> Graphic Design</a></li>
-							<li><a href="#"><img src="assets/img/e2.png" alt="category-image" /> Interior Design</a></li>
-							<li><a href="#"><img src="assets/img/e3.png" alt="category-image" /> 3D Visual Design</a></li>	
-							<li><a href="#"><img src="assets/img/e7.png" alt="category-image" /> Art & Design</a></li>							
+							<li><a href="#"><img src="assets/img/e1.png" alt="category-image" /> Beauté et esthétique</a></li>
+							<li><a href="#"><img src="assets/img/e2.png" alt="category-image" /> Coiffure</a></li>
+							<li><a href="#"><img src="assets/img/e3.png" alt="category-image" /> Cuisine</a></li>
+							<li><a href="#"><img src="assets/img/e4.png" alt="category-image" /> Onglerie</a></li>
+							<li><a href="#"><img src="assets/img/e5.png" alt="category-image" /> Patisserie</a></li>
+							<li><a href="#"><img src="assets/img/e6.png" alt="category-image" /> Artisanat</a></li>
+							<li><a href="#"><img src="assets/img/e7.png" alt="category-image" /> Couture</a></li>
+														
 						</ul>
 					</div>
 				</div><!--- END COL -->							  

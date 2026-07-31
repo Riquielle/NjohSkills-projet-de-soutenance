@@ -26,46 +26,62 @@ class RessourceController extends Controller
     {
         $request->validate([
             'nom' => 'required|string|max:255',
-            'type' => 'required|in:video,pdf,audio,document,image,zip',
-            'fichier' => 'required|file|max:51200' // 50 Mo
+            'fichier' => 'required|file|max:51200|mimes:pdf,mp4,avi,mov,mkv,webm,mp3,wav,ogg,aac,jpg,jpeg,png,gif,webp,zip,rar'
         ]);
 
-        $path = null;
+        $path = $request->file('fichier')
+                        ->store('ressources', 'public');
 
-        if ($request->hasFile('fichier')) {
+        $extension = strtolower(
+            $request->file('fichier')->getClientOriginalExtension()
+        );
 
-            $path = $request->file('fichier')
-                            ->store('ressources', 'public');
-        }
+        $type = match ($extension) {
+
+            // Vidéos
+            'mp4', 'avi', 'mov', 'mkv', 'webm' => 'video',
+
+            // Audios
+            'mp3', 'wav', 'ogg', 'aac' => 'audio',
+
+            // PDF
+            'pdf' => 'pdf',
+
+            // Images
+            'jpg', 'jpeg', 'png', 'gif', 'webp' => 'image',
+
+
+            // Archives
+            'zip', 'rar', '7z' => 'zip',
+
+            default => 'autre',
+        };
 
         $lecon->ressources()->create([
 
             'nom' => $request->nom,
 
-            'type' => $request->type,
+            'type' => $type,
 
-            'fichier' => $path
+            'fichier' => $path,
 
         ]);
 
+        $formation->verifierPublication();
         return redirect()
                 ->back()
                 ->with('success', 'Ressource ajoutée avec succès.');
     }
-
     public function update(Request $request, Ressource $ressource)
     {
         $request->validate([
             'nom' => 'required|string|max:255',
-            'type' => 'required|in:video,pdf,audio,document,image,zip',
-            'fichier' => 'nullable|file|max:51200'
+            'fichier' => 'required|file|max:51200|mimes:pdf,mp4,avi,mov,mkv,webm,mp3,wav,ogg,aac,jpg,jpeg,png,gif,webp,zip,rar'
         ]);
 
         $data = [
 
-            'nom' => $request->nom,
-
-            'type' => $request->type
+            'nom' => $request->nom
 
         ];
 
@@ -77,9 +93,31 @@ class RessourceController extends Controller
                 Storage::disk('public')->delete($ressource->fichier);
             }
 
-            $data['fichier'] = $request
-                ->file('fichier')
-                ->store('ressources', 'public');
+            $path = $request->file('fichier')
+                            ->store('ressources', 'public');
+
+            $extension = strtolower(
+                $request->file('fichier')->getClientOriginalExtension()
+            );
+
+            $type = match ($extension) {
+
+                'mp4', 'avi', 'mov', 'mkv', 'webm' => 'video',
+
+                'mp3', 'wav', 'ogg', 'aac' => 'audio',
+
+                'pdf' => 'pdf',
+
+                'jpg', 'jpeg', 'png', 'gif', 'webp' => 'image',
+
+
+                'zip', 'rar', '7z' => 'zip',
+
+                default => 'autre',
+            };
+
+            $data['fichier'] = $path;
+            $data['type'] = $type;
         }
 
         $ressource->update($data);

@@ -10,7 +10,7 @@
 		<meta name="description" content="Eduleb - Education HTML Template">
 		<meta name="keywords" content="agency, business, corporate, creative, html5, modern, multipurpose, One Page, parallax, startup">		
 		<!-- SITE TITLE -->
-		<title>NjohSkills</title>			
+		<title>SkillOra</title>			
 		<!-- Latest Bootstrap min CSS -->
 				
 		<!-- Google Font -->
@@ -48,9 +48,9 @@
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-20 align-self-center">
-						<div class="site-logo">
-							<a href="{{ route('home') }}"><img src="assets/img/logo.png" alt=""></a>          				
-						</div>
+						<a class="navbar-brand fw-bold fs-1" href="/">
+							<span style="color:#004085;">Skill</span><span style="color:#28a745;">Ora</span>
+						</a>
 					</div><!--- END Col -->
 					
 					<div class="col-60 d-flex">

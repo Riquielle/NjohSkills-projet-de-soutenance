@@ -27,7 +27,9 @@ class FormationController extends Controller
             return redirect()->back()->with('error', 'Profil formateur introuvable');
         }
 
-        $formations = $formateur->formations()->latest()->get();
+        $formations = Formation::where('formateur_id', $formateur->id)
+            ->latest()
+            ->paginate(10);
 
         return view('Mes_formations', compact('formations'));
     }

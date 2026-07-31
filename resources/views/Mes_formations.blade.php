@@ -16,7 +16,26 @@
 				{{ Session::get('error') }}
 			</div>
 		@endif
-        <h2>Mes Formations</h2>
+        
+
+        <div class="d-flex align-items-center mb-4">
+
+    <a href="{{ route('dashboard_fo') }}"
+       class="btn btn-outline-secondary rounded-circle me-3"
+       title="Retour"
+       style="width:45px;height:45px;display:flex;align-items:center;justify-content:center;">
+
+        <i class="fas fa-arrow-left"></i>
+
+    </a>
+
+    <h2 class="fw-bold mb-0">
+
+        Mes Formations
+
+    </h2>
+
+</div>
 
         <a href="{{ route('A_formation') }}"
            class="btn btn-primary">
@@ -54,7 +73,33 @@
 
                             <td>{{ $formation->id }}</td>
 
-                            <td>{{ $formation->titre }}</td>
+                            <td>
+
+    <strong>
+        {{ $formation->titre }}
+    </strong>
+
+    <br>
+
+    @if($formation->statut == 'publie')
+
+        <span class="badge bg-success mt-2">
+
+            ✅ Publiée
+
+        </span>
+
+    @else
+
+        <span class="badge bg-warning text-dark mt-2">
+
+            📝 Brouillon
+
+        </span>
+
+    @endif
+
+</td>
 
                             <td>{{ number_format($formation->prix,0,',',' ') }} FCFA</td>
 
@@ -223,6 +268,13 @@
         </div>
 
     </div>
+
+    <div class="d-flex justify-content-center mt-4">
+
+    {{ $formations->links() }}
+
+</div>
+
 
 </div>
 

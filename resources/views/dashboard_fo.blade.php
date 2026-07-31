@@ -34,15 +34,12 @@
                         Tableau de bord
                     </a>
 
-                    <a href="#" class="list-group-item list-group-item-action">
+                    <a href="{{ route('Mes_formations') }}" class="list-group-item list-group-item-action">
                         Mes formations
                     </a>
 
-                    <a href="#" class="list-group-item list-group-item-action">
-                        Ajouter une formation
-                    </a>
 
-                    <a href="#" class="list-group-item list-group-item-action">
+                    <a href="{{ route('mes_apprenants') }}" class="list-group-item list-group-item-action">
                         Mes apprenants
                     </a>
 
@@ -63,9 +60,7 @@
                         Mon profil
                     </a>
 
-                    <a href="#" class="list-group-item list-group-item-action text-danger">
-                        Déconnexion
-                    </a>
+                    
 
                 </div>
 
@@ -93,7 +88,7 @@
                 <div class="col-md-4 mb-3">
                     <div class="card bg-primary text-white shadow border-0">
                         <div class="card-body text-center">
-                            <h3>12</h3>
+                            <h3>{{ $formationsTotal }}</h3>
                             <p>Formations</p>
                         </div>
                     </div>
@@ -102,7 +97,7 @@
                 <div class="col-md-4 mb-3">
                     <div class="card bg-success text-white shadow border-0">
                         <div class="card-body text-center">
-                            <h3>85</h3>
+                            <h3>{{ $apprenantsTotal }}</h3>
                             <p>Apprenants</p>
                         </div>
                     </div>
@@ -111,7 +106,8 @@
                 <div class="col-md-4 mb-3">
                     <div class="card bg-warning text-white shadow border-0">
                         <div class="card-body text-center">
-                            <h3>250000 FCFA</h3>
+                            <h3>{{ number_format($revenus,0,',',' ') }}
+                                FCFA</h3>
                             <p>Revenus</p>
                         </div>
                     </div>
@@ -123,7 +119,7 @@
             <div class="card shadow border-0 mb-4">
 
                 <div class="card-header bg-white">
-                    <h5>Mes formations (Couture)</h5>
+                    <h5>Mes formations: {{ $formateur->specialite }}</h5>
                 </div>
 
                 <div class="card-body table-responsive">
@@ -141,14 +137,69 @@
 
                         <tbody>
 
+                            @forelse($formations as $formation)
+
                             <tr>
-                                <td>Couture Débutant</td>
-                                <td>25 000 FCFA</td>
-                                <td>20</td>
-                                <td>
-                                    <span class="badge bg-success">Publiée</span>
-                                </td>
+
+                            <td>
+                            {{ $formation->titre }}
+                            </td>
+
+
+                            <td>
+                            {{ number_format($formation->prix,0,',',' ') }}
+                            FCFA
+                            </td>
+
+
+                            <td>
+
+                            {{ $formation->inscriptions_count }}
+
+                            </td>
+
+
+                            <td>
+
+                             @if($formation->statut == 'publie')
+
+                                <span class="badge bg-success">
+
+                                    ✅ Publiée
+
+                                </span>
+
+                            @else
+
+                                <span class="badge bg-warning text-dark">
+
+                                    📝 Brouillon
+
+                                </span>
+
+                            @endif
+
+
+                            </td>
+
+
                             </tr>
+
+
+                            @empty
+
+                            <tr>
+
+                            <td colspan="4" class="text-center">
+
+                            Aucune formation créée.
+
+                            </td>
+
+                            </tr>
+
+
+                            @endforelse
 
                         </tbody>
 

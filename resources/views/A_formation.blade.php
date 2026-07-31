@@ -10,11 +10,26 @@
 
             <div class="card shadow border-0">
 
-                <div class="card-header bg-primary text-white">
-                    <h4 class="mb-0">
-                        Ajouter une formation
-                    </h4>
-                </div>
+
+
+                <div class="card-header bg-primary text-white d-flex align-items-center">
+
+    <a href="{{ route('dashboard_fo') }}"
+       class="btn btn-light rounded-circle me-3"
+       title="Retour"
+       style="width:42px;height:42px;display:flex;align-items:center;justify-content:center;">
+
+        <i class="fas fa-arrow-left"></i>
+
+    </a>
+
+    <h4 class="mb-0">
+
+        Ajouter une formation
+
+    </h4>
+
+</div>
 
                 <div class="card-body">
 

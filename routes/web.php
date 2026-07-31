@@ -11,6 +11,15 @@ use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\ApprenantController;
 use App\Http\Controllers\RessourceController;
 use App\Http\Controllers\LeconController;
+use App\Http\Controllers\QuizController;
+use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\ApprenantQuizController;
+use App\Http\Controllers\RessourceProgressionController;  
+use App\Http\Controllers\CertificatController;
+use App\Http\Controllers\DashboardApprenantController;
+use App\Http\Controllers\AssistantIAController;
+use App\Http\Controllers\ProfilController;
+
 
 
 
@@ -37,7 +46,7 @@ Route::group(['middleware' => 'auth'],function () {
 
     Route::get('/details_formations/{id}',[DashboardapController::class,'details_formations'])->name('details_formations');
     Route::get('/ma_formation/{id}', [ApprenantController::class, 'ma_Formation'])
-    ->name('ma_Formation');
+    ->name('ma_formation');
 
     Route::get('/formations/{formation}/modules',
         [ModuleController::class,'module'])
@@ -83,7 +92,153 @@ Route::group(['middleware' => 'auth'],function () {
     Route::delete('/ressources/{ressource}',
         [RessourceController::class, 'destroy'])
         ->name('ressources.destroy');
- });
+    
+    Route::post('/ressource/{ressource}/terminer',
+        [RessourceProgressionController::class,'terminer'])
+        ->name('terminer');
+
+
+        // ================= QUIZ =================
+
+    Route::get('/module/{module}/quiz',
+        [QuizController::class,'quiz'])
+        ->name('quiz');
+
+    Route::post('/module/{module}/quiz',
+        [QuizController::class,'store'])
+        ->name('quiz.store');
+
+    Route::put('/quiz/{quiz}',
+        [QuizController::class,'update'])
+        ->name('quiz.update');
+
+    Route::delete('/quiz/{quiz}',
+        [QuizController::class,'destroy'])
+        ->name('quiz.destroy');
+    
+    // ================= QUESTIONS =================
+
+    Route::post('/quiz/{quiz}/question',
+        [QuestionController::class,'store'])
+        ->name('question.store');
+
+    Route::put('/question/{question}',
+        [QuestionController::class,'update'])
+        ->name('question.update');
+
+    Route::delete('/question/{question}',
+        [QuestionController::class,'destroy'])
+        ->name('question.destroy');
+
+        // ================= monter et descendre =================
+
+    Route::put('/question/{question}/monter',
+    [QuestionController::class,'monter'])
+    ->name('question.monter');
+
+    Route::put('/question/{question}/descendre',
+        [QuestionController::class,'descendre'])
+        ->name('question.descendre');
+
+    Route::post('/question/{question}/dupliquer',
+        [QuestionController::class,'dupliquer'])
+        ->name('question.dupliquer');
+
+
+    Route::get('/quiz/{quiz}/passer',
+        [ApprenantQuizController::class,'passer'])
+        ->name('passer');
+
+    Route::post('/quiz/{quiz}/passer',
+        [ApprenantQuizController::class,'submit'])
+        ->name('quiz.submit');
+
+    Route::get('/quiz/resultat/{tentative}',
+        [ApprenantQuizController::class,'resultat'])
+        ->name('resultat');
+
+    Route::get(
+        '/certificat/{formation}',
+        [CertificatController::class,'certificat']
+    )->name('certificat');
+
+    Route::get(
+        '/dashboard/apprenant',
+        [DashboardApprenantController::class,'dashboardapprenant']
+    )->name('dashboardapprenant');
+
+    Route::get('/mesa_formations',
+        [DashboardApprenantController::class,'mesa_Formations']
+    )->name('mesa_formations');
+
+    Route::get('/ma_progression',
+        [DashboardApprenantController::class,'ma_progression']
+    )->name('ma_progression');
+
+    Route::get('/mes_certificats',
+        [DashboardApprenantController::class,'mes_certificats']
+    )->name('mes_certificats');
+
+    Route::get('/assistant_ia',
+        [AssistantIAController::class,'assistant_ia']
+    )->name('assistant_ia');
+
+
+    Route::post('/assistant_ia/message',
+        [AssistantIAController::class,'assistant_message']
+    )->name('assistant_message');
+
+    Route::get('/formateur/apprenants',
+        [DashboardfoController::class,'mes_apprenants']
+    )->name('mes_apprenants');
+
+    Route::get(
+        '/formateur/apprenants/{inscription}',
+        [DashboardfoController::class,'voir_ap']
+    )->name('voir_ap');
+
+    Route::get(
+        '/historique-quiz/{quiz}',
+        [QuizController::class,'historique']
+    )->name('historique');
+
+    // Apprenant
+    Route::get('/mon-profil', [ProfilController::class,'profil'])
+        ->name('profil');
+
+    // Formateur
+    Route::get('/formateur/profil', [ProfilController::class,'profil_formateur'])
+        ->name('profil_formateur');
+
+        // Modification profil apprenant
+    Route::post('/mon-profil/update', 
+        [ProfilController::class,'profil_update'])
+        ->name('profil_update');
+
+
+    // Modification profil formateur
+    Route::post('/formateur/profil/update',
+        [ProfilController::class,'profil_formateur_update'])
+        ->name('profil_formateur_update');
+
+    Route::post('/mon-profil/photo/delete',
+        [ProfilController::class,'supprimer_photo'])
+        ->name('supprimer_photo');
+
+    Route::post('/mon-profil/password',
+        [ProfilController::class,'changer_password'])
+        ->name('changer_password');
+
+        // Suppression photo formateur
+    Route::post('/formateur/photo/delete',
+        [ProfilController::class,'supprimer_photo_formateur'])
+        ->name('supprimer_photo_formateur');
+
+    Route::post('/formateur/password/update',
+        [ProfilController::class,'modifier_password_formateur'])
+        ->name('modifier_password_formateur');
+});
+
 
 
 

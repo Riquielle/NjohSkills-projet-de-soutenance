@@ -39,6 +39,7 @@ class ModuleController extends Controller
             'ordre' => $request->ordre,
         ]);
 
+        $formation->verifierPublication();
         return redirect()->back()->with('success', 'Module ajouté avec succès.');
     }
 

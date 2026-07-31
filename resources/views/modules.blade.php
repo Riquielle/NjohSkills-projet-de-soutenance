@@ -92,6 +92,15 @@
 
                         </a>
 
+                        <a href="{{ route('quiz',$module->id) }}"
+                            class="btn btn-info btn-sm">
+
+                            <i class="fas fa-question-circle"></i>
+
+                            Quiz
+
+                        </a>
+
 
                         <button class="btn btn-warning btn-sm"
                                 data-bs-toggle="modal"

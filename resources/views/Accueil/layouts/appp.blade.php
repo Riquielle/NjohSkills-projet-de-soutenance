@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/apprenant.css') }}">
 
 </head>
-
+@stack('scripts')
 <body>
 
 <!-- ===========================
@@ -31,8 +31,8 @@
 
     <div class="container">
 
-        <a class="navbar-brand fw-bold text-primary" href="#">
-            NjohSkills
+        <a class="navbar-brand fw-bold fs-1" href="/">
+            <span style="color:#004085;">Skill</span><span style="color:#28a745;">Ora</span>
         </a>
 
         <button class="navbar-toggler"
@@ -55,22 +55,12 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        Formations
+                    <a class="nav-link" href="{{ route('dashboardapprenant') }}">
+                        Tableau de bord
                     </a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        Mes formations
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        Certificats
-                    </a>
-                </li>
+                
 
             </ul>
 
@@ -97,13 +87,13 @@
                 <ul class="dropdown-menu dropdown-menu-end">
 
                     <li>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="{{ route('profil') }}">
                             Mon profil
                         </a>
                     </li>
 
                     <li>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="{{ route('ma_progression') }}">
                             Ma progression
                         </a>
                     </li>
@@ -115,7 +105,7 @@
                     </li>
 
                     <li>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="{{ route('mes_certificats') }}">
                             Mes certificats
                         </a>
                     </li>

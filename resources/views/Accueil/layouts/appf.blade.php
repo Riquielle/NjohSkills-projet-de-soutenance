@@ -21,52 +21,60 @@
 <div class="wrapper">
 
     <!-- Sidebar -->
+    <!-- Sidebar -->
     <aside class="sidebar">
 
         <div class="sidebar-header">
-            <h3>SkillLearn</h3>
-            <small>Formateur</small>
+            <a class="navbar-brand fw-bold fs-1" href="/">
+                <span style="color:#004085;">Skill</span><span style="color:#28a745;">Ora</span>
+            </a>
         </div>
 
         <ul class="sidebar-menu">
 
             <li>
-                <a href="{{ route('dashboard_fo') }}">
+                <a class="{{ request()->routeIs('dashboard_fo') ? 'active' : '' }}"
+                href="{{ route('dashboard_fo') }}">
                     <i class="fas fa-home"></i>
                     Tableau de bord
                 </a>
             </li>
 
             <li>
-                <a href="{{ route('Mes_formations') }}">
+                <a class="{{ request()->routeIs('Mes_formations') ? 'active' : '' }}"
+                href="{{ route('Mes_formations') }}">
                     <i class="fas fa-book"></i>
                     Mes formations
                 </a>
             </li>
 
             <li>
-                <a href="{{ route('A_formation') }}">
+                <a class="{{ request()->routeIs('A_formation') ? 'active' : '' }}"
+                href="{{ route('A_formation') }}">
                     <i class="fas fa-plus-circle"></i>
                     Ajouter une formation
                 </a>
             </li>
 
             <li>
-                <a href="#">
+                <a class="{{ request()->routeIs('mes_apprenants') ? 'active' : '' }}"
+                href="{{ route('mes_apprenants') }}">
                     <i class="fas fa-users"></i>
                     Apprenants
                 </a>
             </li>
 
             <li>
-                <a href="#">
+                <a class="{{ request()->routeIs('messages_formateur') ? 'active' : '' }}"
+                href="#">
                     <i class="fas fa-comments"></i>
                     Messages
                 </a>
             </li>
 
             <li>
-                <a href="#">
+                <a class="{{ request()->routeIs('profil_formateur') ? 'active' : '' }}"
+                href="{{ route('profil_formateur') }}">
                     <i class="fas fa-user"></i>
                     Mon profil
                 </a>

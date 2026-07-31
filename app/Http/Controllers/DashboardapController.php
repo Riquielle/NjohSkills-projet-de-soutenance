@@ -17,21 +17,26 @@ class DashboardapController extends Controller
 
    
 
-public function details_formations($id)
-{
-    // 1. On récupère la formation avec son formateur, ou on renvoie une erreur 404 si elle n'existe pas
-    $formation = Formation::with('formateur')->findOrFail($id);
+    public function details_formations($id)
+    {
+        $formation = Formation::with([
+            'formateur.user',
+            'modules.lecons'
+        ])->findOrFail($id);
 
-    
-         $inscription = null;
+        $inscription = null;
 
         if (auth()->check()) {
+
             $inscription = Inscription::where('user_id', auth()->id())
-                                    ->where('formation_id', $formation->id)
-                                    ->first();
+                            ->where('formation_id', $formation->id)
+                            ->first();
         }
-    // 3. On envoie les DEUX variables à la vue
-        return view('Accueil.details_formations', compact('formation', 'inscription'));
-        }
+
+        return view('Accueil.details_formations', compact(
+            'formation',
+            'inscription'
+        ));
+    }
    
 }
