@@ -18,7 +18,7 @@
 		<!-- END SECTION TOP -->
 		
 		<!-- START CATEGORY -->
-		<section class="top_cat__area section-padding" style="background-image: url(assets/img/bg/shape-1.png); background-size:cover; background-position: center center;">
+		<section class="top_cat__area section-padding" style="background-image: url('{{ asset('assets/img/bg/shape-1.png') }}'); background-size:cover; background-position: center center;">
 			<div class="container">                                 
 				<div class="section-title text-center">
 					<h2>Transformez votre passion en un métier d'avenir</h2>
