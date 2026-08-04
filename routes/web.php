@@ -1,10 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\http\Controllers\AccueilController;
-use App\http\Controllers\LoginController;
-use App\http\Controllers\DashboardapController;
-use App\http\Controllers\DashboardfoController;
+use App\Http\Controllers\AccueilController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\DashboardapController;
+use App\Http\Controllers\DashboardfoController;
 use App\Http\Controllers\FormationController;
 use App\Http\Controllers\PaiementController;
 use App\Http\Controllers\ModuleController;
