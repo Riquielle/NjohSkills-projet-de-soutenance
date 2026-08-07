@@ -56,41 +56,32 @@
 					<div class="col-60 d-flex">
 						<nav id="main-menu">
 							<ul>
-								<li class="menu-item-has-children"><a href="{{ route('home') }}">Accueil</a>
-									<ul>										
+								<li class="menu-item-has-children"><a href="#">Accueil</a>
+									<ul>                                        
 										<li><a href="{{ route('home') }}">Accueil 01</a></li>
 										<li><a href="{{ route('home2') }}">Accueil 02</a></li>
 									</ul>
 								</li>
-								<li><a href="{{ route('about') }}">A propos</a></li>				  				  
-								<li class="menu-item-has-children"><a href="{{ route('formations') }}">Formations</a>
-									<ul>										
+								<li><a href="{{ route('about') }}">A propos</a></li>                                  
+								<li class="menu-item-has-children"><a href="#">Formations</a>
+									<ul>                                        
 										<li><a href="{{ route('formations') }}">Formations</a></li>
-										
 									</ul>
-								</li>								
-								<li class="menu-item-has-children"><a href="#">Pages</a>
-									<ul>										
-										<li><a href="instructor.html">Instructor</a></li>
-										<li><a href="ins_details.html">Instructor Details</a></li>
-										<li><a href="pricing.html">Pricing Plan</a></li>
-										<li><a href="faq.html">Faq Page</a></li>			
-										<li><a href="404.html">404</a></li>				
-									</ul>
-								</li>							
+								</li>                               
+								                         
 								<li class="menu-item-has-children"><a href="blog.html">Blog</a>
-									<ul>										
+									<ul>                                        
 										<li><a href="blog.html">Blog</a></li>
 										<li><a href="blog_single.html">Blog Details</a></li>
 									</ul>
-								</li>							  
-								<li><a href="contact.html">Contact</a></li>
+								</li>                             
+								
 							</ul>
 						</nav>
 					</div><!--- END Col -->
 
+					<!-- Boutons Ordinateur (visibles sur grand écran) -->
 					<div class="col-20 d-none d-xl-flex justify-content-end align-items-center gap-3">
-
 						<a href="{{ route('sign_in') }}" class="btn_one">
 							Se connecter
 						</a>
@@ -116,44 +107,42 @@
 								</li>
 							</ul>
 						</div>
-
 					</div>
 					
-					<ul class="mobile_menu">						
-						<li><a href="{{ route('home') }}">Accueil</a>
-							<ul class="sub-menu">										
+					<!-- Menu Mobile (mis à jour avec les accès d'authentification) -->
+					<ul class="mobile_menu">                        
+						<li><a href="#">Accueil</a>
+							<ul class="sub-menu">                                       
 								<li><a href="{{ route('home') }}">Accueil1</a></li>
-								<li><a href="{{ route('home2') }}">Accueil2</a></li>						
+								<li><a href="{{ route('home2') }}">Accueil2</a></li>                        
 							</ul>
-						</li>	
-						<li><a href="{{ route('about') }}">A propos</a></li>						
+						</li>   
+						<li><a href="{{ route('about') }}">A propos</a></li>                        
 						<li><a href="#">Formations</a>
-							<ul class="sub-menu">										
-								<li><a href="course.html">Formations</a></li>
-								<li><a href="course_details.html">Details des formations</a></li>									
+							<ul class="sub-menu">                                       
+								<li><a href="{{ route('formations') }}">Formations</a></li>
 							</ul>
 						</li>
-						<li><a href="#">Pages</a>
-							<ul class="sub-menu">									
-								<li><a href="instructor.html">Instructor</a></li>
-								<li><a href="ins_details.html">Instructor Details</a></li>
-								<li><a href="pricing.html">Pricing Plan</a></li>
-								<li><a href="faq.html">Faq Page</a></li>			
-								<li><a href="404.html">404</a></li>							
-							</ul>
-						</li>			
-						<li><a href="blog.html">Blog</a>
-							<ul class="sub-menu">										
+						<li class="menu-item-has-children"><a href="blog.html">Blog</a>
+							<ul>                                        
 								<li><a href="blog.html">Blog</a></li>
 								<li><a href="blog_single.html">Blog Details</a></li>
 							</ul>
-						</li>						
-						<li><a href="contact.html">Contact</a></li>
-					</ul>			
+						</li> 
+
+						<!-- Ajout des liens d'accès dans le menu mobile -->
+						<li><a href="{{ route('sign_in') }}">Se connecter</a></li>
+						<li class="menu-item-has-children"><a href="#">S'inscrire</a>
+							<ul class="sub-menu">
+								<li><a href="{{ route('sign_up.apprenant') }}">S'inscrire comme Apprenant</a></li>
+								<li><a href="{{ route('sign_up.formateur') }}">S'inscrire comme Formateur</a></li>
+							</ul>
+						</li>
+					</ul>           
 				</div><!--- END ROW -->
 			</div><!--- END CONTAINER -->
-		</div> 	  
-		<!-- END NAVBAR -->	
+		</div>    
+		<!-- END NAVBAR -->
 
             @yield('content')
 

@@ -4,7 +4,7 @@
 <!-- START TOP HEADER CLASS -->
 	<div class="top_header_banner">
 <!-- START SECTION TOP -->
-		<section class="section-top">
+		<section class="section-top" style="background-image: url('{{ asset('assets/img/bg/home-bg.jpg') }}'); background-size:cover; background-position: center center;" >
 			<div class="container">
 				<div class="col-lg-10 offset-lg-1 text-center">
 					<div class="section-top-title wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">

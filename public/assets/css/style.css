@@ -2771,7 +2771,7 @@ font-weight: 700;
 .section-top {
 	padding-top:150px;
 	position: relative;
-	background: url(../img/bg/section-top.jpg);
+	
 	background-size: cover;
 	background-position: center;
 	padding-bottom: 90px;
