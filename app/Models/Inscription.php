@@ -12,7 +12,17 @@ class Inscription extends Model
         'user_id',
         'statut',
         'progression',
+        'date_debut',
+        'date_fin',
+        'prolongee',
     ];
+
+    protected $casts = [
+        'date_debut' => 'date',
+        'date_fin' => 'date',
+        'prolongee' => 'boolean',
+    ];
+
 
     public function formation()
     {

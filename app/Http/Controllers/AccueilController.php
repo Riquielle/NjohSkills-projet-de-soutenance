@@ -9,25 +9,29 @@ use Illuminate\Http\Request;
 
 class AccueilController extends Controller
 {
-    public function index()
-    {   
+   public function index()
+{
+    $nombreApprenants = User::where('role', 'apprenant')->count();
 
-        $nombreApprenants = User::where('role','apprenant')->count();
+    $nombreFormations = Formation::where('statut', 'publie')->count();
 
-        $nombreFormations = Formation::where('statut','publie')->count();
+    $nombreFormateurs = Formateur::count();
 
-        $nombreFormateurs = Formateur::count();
-        
-    // Récupère toutes les formations (ou filtrez selon vos besoins, par exemple avec ->latest()->get())
-        $formations = Formation::with('formateur')->get(); 
+    $formations = Formation::with('formateur')->get();
 
-        // On transmet la variable $formations à la vue
-        return view('Accueil.index', compact('formations',
+    $formateurs = Formateur::with('user')
+        ->withCount('formations')
+        ->latest()
+        ->get();
+
+    return view('Accueil.index', compact(
+        'formations',
+        'formateurs',
         'nombreApprenants',
         'nombreFormations',
-        'nombreFormateurs'));
-        
-    }
+        'nombreFormateurs'
+    ));
+}
 
     public function about()
     {

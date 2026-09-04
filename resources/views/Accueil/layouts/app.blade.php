@@ -114,7 +114,7 @@
 						<li><a href="#">Accueil</a>
 							<ul class="sub-menu">                                       
 								<li><a href="{{ route('home') }}">Accueil1</a></li>
-								<li><a href="{{ route('home2') }}">Accueil2</a></li>                        
+								                       
 							</ul>
 						</li>   
 						<li><a href="{{ route('about') }}">A propos</a></li>                        
@@ -123,10 +123,10 @@
 								<li><a href="{{ route('formations') }}">Formations</a></li>
 							</ul>
 						</li>
-						<li class="menu-item-has-children"><a href="blog.html">Blog</a>
+						<li class="menu-item-has-children"><a href="blog.html">Cours Gratuit</a>
 							<ul>                                        
-								<li><a href="blog.html">Blog</a></li>
-								<li><a href="blog_single.html">Blog Details</a></li>
+								<li><a href="blog.html">Entrepreneuriat</a></li>
+								
 							</ul>
 						</li> 
 
@@ -148,90 +148,249 @@
 
 
         <!-- START FOOTER -->
-		<div class="footer section-padding">
-			<div class="container">				
-				<div class="row">						
-					<div class="col-lg-3 col-sm-6 col-xs-12">
-						<div class="single_footer">
-							<a href="index.html"><img src="assets/img/logo.png" alt=""></a>         
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae risus nec dui venenatis dignissim.</p>
-							<div class="social_profile">
-								<ul>
-									<li><a class="f_facebook" href="#"><i class="fa-solid fa-x"></i></a></li>
-									<li><a class="f_twitter" href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
-									<li><a class="f_instagram"href="#"><i class="fa-brands fa-instagram"></i></a></li>
-									<li><a class="f_linkedin" href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
-								</ul>
-							</div>
-						</div>			
-					</div><!--- END COL -->						
-					<div class="col-lg-2 col-sm-6 col-xs-12">
-						<div class="single_footer">
-							<h4>About Eduleb</h4>
-							<ul>
-								<li><a href="#">About us</a></li>
-								<li><a href="#">Instructor Registration</a></li>
-								<li><a href="#">Become A Teacher</a></li>
-								<li><a href="#">All Instrustors</a></li>
-								<li><a href="#">Asked Question</a></li>
-								<li><a href="#">Contact us</a></li>
-							</ul>
-						</div>
-					</div><!--- END COL -->	
-					<div class="col-lg-2 col-sm-6 col-xs-12">
-						<div class="single_footer">
-							<h4>Popular Courese</h4>
-							<ul>
-								<li><a href="#">Development</a></li>
-								<li><a href="#">Arts & design</a></li>
-								<li><a href="#">Visual Design</a></li>
-								<li><a href="#">Graphic Design</a></li>
-								<li><a href="#">Code Inspection</a></li>						
-								<li><a href="#">Digital Marketing</a></li>						
-							</ul>
-						</div>
-					</div><!--- END COL -->
-					<div class="col-lg-3 col-sm-6 col-xs-12">
-						<div class="single_footer">
-							<h4>Contact Info</h4>
-							<div class="sf_contact">
-								<span class="ti-map"></span>
-								<p>2570 Quadra Street Victoria Road, New York, Canada</p>
-							</div>
-							<div class="sf_contact">
-								<span class="ti-mobile"></span>
-								<p>+88 457 845 695</p>
-							</div>
-							<div class="sf_contact">
-								<span class="ti-mobile"></span>
-								<p><a href="tel:+88457845695">Contact Whatsapp</a></p>
-							</div>
-							<div class="sf_contact">
-								<span class="ti-email"></span>
-								<p>example@yourmail.com</p>
-							</div>
-						</div>
-					</div><!--- END COL -->						
-					<div class="col-lg-2 col-sm-6 col-xs-12">
-						<div class="single_footer">
-							<h4>Download App</h4>
-							<p>Download our app from app store and goole play store.</p>
-							<a href="index.html"><img src="assets/img/google-play.jpg" class="foot_img" alt=""></a>  
-							<a href="index.html"><img src="assets/img/app-store.jpg" class="foot_img" alt=""></a>  
-						</div>
-					</div><!--- END COL -->	
-				</div><!--- END ROW -->					
-			</div><!--- END CONTAINER -->
-		</div>
-		<!-- END FOOTER -->	
+<footer class="skillora-footer">
 
-		<!-- START FOOTER COPYRIGHT -->	
-		<div class="foot_copy">
-			<div class="footer_copyright">
-				<p>&copy; 2024. All Rights Reserved by <a href="https://bestwpware.com/">Bestwpware</a> • Distributed by <a href="https://themewagon.com">ThemeWagon</a></p>
-			</div>	
-		</div>
-		<!-- END FOOTER COPYRIGHT -->	
+    <div class="container">
+        <div class="row">
+
+            <!-- COLONNE 1 : LOGO + PRESENTATION -->
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="skillora-footer-about">
+
+                    <a href="{{ url('/') }}" class="skillora-footer-logo">
+                        <img src="{{ asset('assets/img/logo.png') }}"
+                             alt="SkillOra">
+                    </a>
+
+                    <p>
+                        SkillOra est une plateforme intelligente de formation
+                        dédiée à l'acquisition de compétences pratiques et
+                        professionnelles.
+                    </p>
+
+                    <p>
+                        <strong>Apprendre. Pratiquer. Entreprendre.</strong>
+                    </p>
+
+                    <!-- RESEAUX SOCIAUX -->
+                    <div class="skillora-social">
+
+                        <a href="#" aria-label="Facebook">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+
+                        <a href="#" aria-label="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+
+                        <a href="#" aria-label="LinkedIn">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+
+                        <a href="#" aria-label="WhatsApp">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- COLONNE 2 : NAVIGATION -->
+            <div class="col-lg-2 col-md-6 col-sm-6 mb-4">
+                <div class="skillora-footer-widget">
+
+                    <h4>Navigation</h4>
+
+                    <ul>
+                        <li>
+                            <a href="{{ url('/') }}">
+                                Accueil
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('about') }}">
+                                À propos
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('formations') }}">
+                                Formations
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#formateurs">
+                                Formateurs
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#categories">
+                                Catégories
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+
+
+            <!-- COLONNE 3 : DOMAINES -->
+            <div class="col-lg-3 col-md-6 col-sm-6 mb-4">
+                <div class="skillora-footer-widget">
+
+                    <h4>Nos domaines</h4>
+
+                    <ul>
+                        <li>
+                            <a href="#categories">
+                                Beauté & Esthétique
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#categories">
+                                Coiffure
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#categories">
+                                Cuisine
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#categories">
+                                Pâtisserie
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#categories">
+                                Onglerie
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#categories">
+                                Couture & Artisanat
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+
+
+            <!-- COLONNE 4 : CONTACT -->
+            <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+                <div class="skillora-footer-widget">
+
+                    <h4>Contactez-nous</h4>
+
+                    <div class="skillora-contact">
+
+                        <div class="skillora-contact-item">
+                            <span>
+                                <i class="fa-solid fa-location-dot"></i>
+                            </span>
+
+                            <p>
+                                Cameroun
+                            </p>
+                        </div>
+
+
+                        <div class="skillora-contact-item">
+                            <span>
+                                <i class="fa-solid fa-phone"></i>
+                            </span>
+
+                            <p>
+                                <a href="tel:+237000000000">
+                                    +237 00 00 00 00
+                                </a>
+                            </p>
+                        </div>
+
+
+                        <div class="skillora-contact-item">
+                            <span>
+                                <i class="fa-brands fa-whatsapp"></i>
+                            </span>
+
+                            <p>
+                                <a href="https://wa.me/237000000000"
+                                   target="_blank">
+                                    WhatsApp
+                                </a>
+                            </p>
+                        </div>
+
+
+                        <div class="skillora-contact-item">
+                            <span>
+                                <i class="fa-solid fa-envelope"></i>
+                            </span>
+
+                            <p>
+                                <a href="mailto:contact@skillora.com">
+                                    contact@skillora.com
+                                </a>
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</footer>
+<!-- END FOOTER -->
+
+
+<!-- START COPYRIGHT -->
+<div class="skillora-copyright">
+
+    <div class="container">
+
+        <div class="row align-items-center">
+
+            <div class="col-md-6">
+                <p>
+                    © {{ date('Y') }} <strong>SkillOra</strong>.
+                    Tous droits réservés.
+                </p>
+            </div>
+
+            <div class="col-md-6 text-md-end">
+
+                <a href="#">
+                    Conditions d'utilisation
+                </a>
+
+                <span> | </span>
+
+                <a href="#">
+                    Politique de confidentialité
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- END COPYRIGHT -->
 	
 	<!-- Latest jQuery -->
 		<script src="{{ asset('assets/js/jquery-1.12.4.min.js') }}"></script>

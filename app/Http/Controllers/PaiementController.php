@@ -44,11 +44,19 @@ class PaiementController extends Controller
         if ($paiementReussi) {
             
             // Étape A : Création de l'inscription
+            
+            $dateDebut = now();
+
+            $dateFin = $dateDebut->copy()->addDays($formation->duree);
+
             Inscription::create([
                 'user_id' => $user->id,
                 'formation_id' => $formation->id,
                 'statut' => 'valide',
-                'progression'  => 0,
+                'progression' => 0,
+                'date_debut' => $dateDebut,
+                'date_fin' => $dateFin,
+                'prolongee' => false,
             ]);
 
             // Étape B : Création du paiement avec vos colonnes exactes (statut -> paye)
@@ -65,5 +73,43 @@ class PaiementController extends Controller
         }
 
         return redirect()->back()->with('error', 'Le paiement a échoué.');
+    }
+
+
+
+    public function prolonger($id)
+    {
+        $inscription = Inscription::findOrFail($id);
+
+        // Vérifier que la formation n'est pas déjà terminée
+        if ($inscription->progression >= 100) {
+
+            return back()->with(
+                'error',
+                'Cette formation est déjà terminée.'
+            );
+        }
+
+        // Vérifier que la prolongation n'a pas déjà été utilisée
+        if ($inscription->prolongee) {
+
+            return back()->with(
+                'error',
+                'La prolongation a déjà été utilisée.'
+            );
+        }
+
+        // Ajouter automatiquement 7 jours
+        $inscription->date_fin = $inscription->date_fin->copy()->addDays(7);
+
+        // Marquer la prolongation comme utilisée
+        $inscription->prolongee = true;
+
+        $inscription->save();
+
+        return back()->with(
+            'success',
+            'Votre formation a été prolongée de 7 jours.'
+        );
     }
 }

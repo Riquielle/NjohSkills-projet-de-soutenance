@@ -29,16 +29,41 @@ class LoginController extends Controller
             if(Auth::attempt(['email'=> $request->email,'password' => $request->password])){
 
                             // 🔥 AJOUT MINIMUM ICI
-            $user = Auth::user();
+                $user = Auth::user();
 
-            if ($user->role == 'apprenant') {
-                return redirect()->route('dashboard_ap');
-            }
+                 // Vérification du statut du compte
+                if (!$user->actif) {
 
-            if ($user->role == 'formateur') {
-                return redirect()->route('dashboard_fo');
-            }
+                    Auth::logout();
 
+                    return redirect()
+                        ->route('sign_in')
+                        ->with(
+                            'error',
+                            'Votre compte a été désactivé par l’administrateur.'
+                        );
+                }
+
+                if ($user->role == 'apprenant') {
+                    return redirect()->route('dashboard_ap');
+                }
+
+                if ($user->role == 'formateur') {
+                    return redirect()->route('dashboard_fo');
+                }
+
+             // ADMINISTRATEUR
+                if ($user->role == 'admin') {
+
+                    return redirect()->route('admin.dashboard');
+                }
+
+
+                // Si le rôle n'est pas reconnu
+                Auth::logout();
+
+                return redirect()->route('sign_in')
+                    ->with('error', 'Votre rôle utilisateur est invalide.');
 
 
             } else {

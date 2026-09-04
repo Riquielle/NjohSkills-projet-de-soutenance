@@ -19,8 +19,6 @@ return new class extends Migration
             $table->string('password');
             $table->enum('role',['apprenant','formateur','admin'])->default('apprenant');
 
-            
-           
 
     
             $table->rememberToken();

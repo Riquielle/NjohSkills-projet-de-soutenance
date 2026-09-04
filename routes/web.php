@@ -19,6 +19,15 @@ use App\Http\Controllers\CertificatController;
 use App\Http\Controllers\DashboardApprenantController;
 use App\Http\Controllers\AssistantIAController;
 use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminApprenantController;
+use App\Http\Controllers\AdminFormateurController;
+use App\Http\Controllers\AdminFormationController;
+use App\Http\Controllers\AdminInscriptionController;
+use App\Http\Controllers\AdminPaiementController;
+use App\Http\Controllers\AdminStatistiqueController;
+use App\Http\Controllers\AdminParametreController;
+
 
 
 
@@ -159,8 +168,10 @@ Route::group(['middleware' => 'auth'],function () {
 
     Route::get(
         '/certificat/{formation}',
-        [CertificatController::class,'certificat']
+        [CertificatController::class,'telecharger']
     )->name('certificat');
+
+    
 
     Route::get(
         '/dashboard/apprenant',
@@ -237,7 +248,122 @@ Route::group(['middleware' => 'auth'],function () {
     Route::post('/formateur/password/update',
         [ProfilController::class,'modifier_password_formateur'])
         ->name('modifier_password_formateur');
+
+    Route::post(
+        '/inscription/{id}/prolonger',
+        [PaiementController::class, 'prolonger']
+    )->name('prolonger');
+
+    Route::get(
+        '/notifications/lire/{notification}',
+        [DashboardfoController::class, 'lireNotification']
+    )->name('notifications.lire');
+
+    
+
+    
 });
+
+Route::get('/certificat/verifier/{numeroCertificat}', 
+    [CertificatController::class, 'verifier']
+)->name('verification');
+
+
+Route::middleware(['auth', 'admin'])->group(function () {
+
+    Route::get('/admin/dashboard',
+        [AdminController::class, 'dashboard']
+    )->name('admin.dashboard');
+
+
+    // ================= APPRENANTS =================
+
+    Route::get('/admin/apprenants',
+        [AdminApprenantController::class, 'index']
+    )->name('admin.apprenants.index');
+
+    Route::post('/admin/apprenants/{id}/desactiver',
+        [AdminApprenantController::class, 'desactiver']
+    )->name('admin.apprenants.desactiver');
+
+    Route::post('/admin/apprenants/{id}/activer',
+        [AdminApprenantController::class, 'activer']
+    )->name('admin.apprenants.activer');
+
+    Route::get('/admin/apprenants/{id}',
+        [AdminApprenantController::class, 'show']
+    )->name('admin.apprenants.show');
+
+
+    // ================= FORMATEURS =================
+
+    Route::get('/admin/formateurs',
+        [AdminFormateurController::class, 'index']
+    )->name('admin.formateurs.index');
+
+    Route::get('/admin/formateurs/{id}',
+        [AdminFormateurController::class, 'show']
+    )->name('admin.formateurs.show');
+
+    Route::patch('/admin/formateurs/{id}/statut',
+        [AdminFormateurController::class, 'toggleStatus']
+    )->name('admin.formateurs.toggle-status');
+
+
+    // ================= FORMATIONS =================
+
+    Route::get('/admin/formations',
+        [AdminFormationController::class, 'index']
+    )->name('admin.formations.index');
+
+    Route::get('/admin/formations/{id}',
+        [AdminFormationController::class, 'show']
+    )->name('admin.formations.show');
+
+    Route::post('/admin/formations/{id}/toggle-statut',
+        [AdminFormationController::class, 'toggleStatut']
+    )->name('admin.formations.toggle');
+
+    Route::delete('/admin/formations/{id}',
+        [AdminFormationController::class, 'destroy']
+    )->name('admin.formations.destroy');
+
+    Route::get('/admin/inscriptions',
+        [AdminInscriptionController::class, 'index']
+    )->name('admin.inscriptions.index');
+
+    Route::get('/admin/inscriptions/{inscription}',
+        [AdminInscriptionController::class, 'show']
+    )->name('admin.inscriptions.show');
+
+    Route::get('/admin/paiements',
+        [AdminPaiementController::class, 'index']
+    )->name('admin.paiements.index');
+
+    Route::get('/admin/paiements/{paiement}',
+        [AdminPaiementController::class, 'show']
+    )->name('admin.paiements.show');
+    
+    Route::get('/admin/statistiques',
+        [AdminStatistiqueController::class, 'index']
+    )->name('admin.statistiques.index');
+
+    Route::get('/admin/parametres', [AdminParametreController::class, 'index'])
+        ->name('admin.parametres.index');
+
+    Route::put('/admin/parametres/profil', [AdminParametreController::class, 'updateProfil'])
+        ->name('admin.parametres.profil');
+
+    Route::put('/admin/parametres/password', [AdminParametreController::class, 'updatePassword'])
+        ->name('admin.parametres.password');
+
+    Route::post('/admin/parametres/notifications', [AdminParametreController::class, 'updateNotifications'])
+        ->name('admin.parametres.notifications');
+
+});
+
+
+
 
 
 
@@ -259,6 +385,6 @@ Route::group(['middleware' => 'auth'],function () {
 
     Route::post('/authenticate',[LoginController::class,'authenticate'])->name('authenticate');
 
+        
 
-
-
+    

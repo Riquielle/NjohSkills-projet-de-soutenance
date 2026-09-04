@@ -11,7 +11,8 @@ class Formateur extends Model
         'telephone',
         'specialite',
         'experience',
-        'biographie'
+        'biographie',
+        
     ];
 
     public function user()

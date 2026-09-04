@@ -19,6 +19,8 @@ class DashboardfoController extends Controller
 
         $user = Auth::user();
 
+        
+
 
         $formateur = $user->formateur;
 
@@ -70,11 +72,34 @@ class DashboardfoController extends Controller
                 'formations',
                 'formationsTotal',
                 'apprenantsTotal',
-                'revenus'
+                'revenus',
+                
             )
         );
     }
 
+
+    
+
+    /**
+     * Lire une notification
+     */
+    public function lireNotification($id)
+    {
+        $notification = Auth::user()
+            ->notifications()
+            ->findOrFail($id);
+
+        $notification->markAsRead();
+
+        // Si la notification concerne une formation
+        if (isset($notification->data['formation_id'])) {
+
+            return redirect()->route('Mes_formations');
+        }
+
+        return back();
+    }
 
     public function mes_apprenants()
     {

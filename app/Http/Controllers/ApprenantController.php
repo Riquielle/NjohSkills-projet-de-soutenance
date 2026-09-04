@@ -22,6 +22,8 @@ class ApprenantController extends Controller
                         ->where('user_id', Auth::id())
                         ->where('statut', 'valide')
                         ->first();
+        
+        
 
         if (!$inscription) {
 
@@ -30,6 +32,8 @@ class ApprenantController extends Controller
                     ->with('error', 'Vous devez être inscrit à cette formation.');
 
         }
+
+        $joursRestants = now()->diffInDays($inscription->date_fin, false);
 
         $modulesDebloques = [];
 
@@ -213,8 +217,12 @@ class ApprenantController extends Controller
                 'quizTentatives',
                 'quizValides',
                 
-                'progressionsModules'
+                'progressionsModules',
+                'joursRestants'
             )
         );
     }
+
+
+    
 }

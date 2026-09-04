@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Formation;
 
+
 class User extends Authenticatable
 {
     /** @use HasFactory<UserFactory> */
@@ -32,6 +33,12 @@ class User extends Authenticatable
         'ville',
         'pays',
         'bio',
+        'actif',
+    ];
+
+
+    protected $casts = [
+        'actif' => 'boolean',
     ];
 
     /**

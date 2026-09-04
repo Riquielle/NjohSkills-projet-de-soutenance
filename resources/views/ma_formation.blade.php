@@ -506,6 +506,107 @@
 
                     <p><strong>Prix :</strong> {{ number_format($formation->prix,0,',',' ') }} FCFA</p>
                     <p><strong>Durée :</strong> {{ $formation->duree }}</p>
+
+                     {{-- DURÉE DE LA FORMATION --}}
+
+                    @if($inscription->progression < 100)
+
+                        @if($joursRestants > 0)
+
+                            <div class="alert alert-info">
+
+                                <i class="fas fa-clock me-2"></i>
+
+                                Il vous reste
+
+                                <strong>
+                                    {{ $joursRestants }} jours
+                                </strong>
+
+                                pour terminer cette formation.
+
+                            </div>
+
+                        @elseif($joursRestants == 0)
+
+                            <div class="alert alert-warning">
+
+                                <i class="fas fa-exclamation-triangle me-2"></i>
+
+                                Votre formation se termine aujourd'hui.
+
+                            </div>
+
+                        @else
+
+                            <div class="alert alert-danger">
+
+                                <i class="fas fa-times-circle me-2"></i>
+
+                                Votre période de formation est terminée.
+
+                            </div>
+
+
+                            {{-- PROLONGATION DISPONIBLE UNE SEULE FOIS --}}
+
+                            @if(!$inscription->prolongee)
+
+                                <div class="text-center mt-3">
+
+                                    <p class="mb-2">
+
+                                        Vous n'avez pas encore terminé votre formation.
+
+                                    </p>
+
+                                    <p class="small text-muted">
+
+                                        Une prolongation de 7 jours vous est proposée.
+
+                                    </p>
+
+                                    <form
+                                        action="{{ route('prolonger', $inscription->id) }}"
+                                        method="POST"
+                                    >
+
+                                        @csrf
+
+                                        <button
+                                            type="submit"
+                                            class="btn btn-primary"
+                                            onclick="return confirm('Voulez-vous prolonger votre formation de 7 jours ?')"
+                                        >
+
+                                            <i class="fas fa-clock me-2"></i>
+
+                                            Prolonger de 7 jours
+
+                                        </button>
+
+                                    </form>
+
+                                </div>
+
+                            @else
+
+                                <div class="alert alert-secondary text-center">
+
+                                    <i class="fas fa-info-circle me-2"></i>
+
+                                    La prolongation de votre formation a déjà été utilisée.
+
+                                </div>
+
+                            @endif
+
+                        @endif
+
+                    @endif
+
+                    
+                
                     <p><strong>Formateur :</strong> {{ $formation->formateur->user->name }}</p>
                     <p><strong>Spécialité :</strong> {{ $formation->formateur->specialite }}</p>
                     <hr>

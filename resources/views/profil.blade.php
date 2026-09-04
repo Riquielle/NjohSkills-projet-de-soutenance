@@ -688,16 +688,16 @@
 
     @if(session('success'))
 
-    <script>
-        setTimeout(function () {
-            let alert = document.querySelector('.alert-success');
+        <script>
+            setTimeout(function () {
+                let alert = document.querySelector('.alert-success');
 
-            if (alert) {
-                let bsAlert = bootstrap.Alert.getOrCreateInstance(alert);
-                bsAlert.close();
-            }
-        }, 10000);
-    </script>
+                if (alert) {
+                    let bsAlert = bootstrap.Alert.getOrCreateInstance(alert);
+                    bsAlert.close();
+                }
+            }, 10000);
+        </script>
 
     @endif
 

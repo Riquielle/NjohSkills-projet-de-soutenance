@@ -3013,3 +3013,674 @@ font-weight: 700;
         grid-template-columns: repeat(2, 1fr);
     }
 }
+
+
+/* =========================================================
+   SKILLORA - SECTION FORMATEURS
+   ========================================================= */
+
+.skillora-team-area {
+    padding: 70px 0;
+    background: #ffffff;
+}
+
+/* Titre "Notre équipe" */
+.skillora-team-area .skillora-section-title {
+    display: block;
+    font-size: 42px;
+    line-height: 1.2;
+    font-weight: 800;
+    color: #0b104a;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* Sous-titre */
+.skillora-team-area .section-title h2 {
+    font-size: 32px;
+    line-height: 42px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.skillora-team-area .section-title p {
+    width: 60%;
+    margin: 15px auto 0;
+}
+
+
+/* =========================================================
+   CARROUSEL
+   ========================================================= */
+
+.skillora-team-carousel {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.skillora-team-viewport {
+    width: 100%;
+    overflow: hidden;
+}
+
+.skillora-team-track {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.45s ease;
+    will-change: transform;
+}
+
+.skillora-team-slide {
+    flex: 0 0 calc((100% - 80px) / 5);
+    min-width: 0;
+}
+
+
+/* =========================================================
+   CARTE FORMATEUR
+   ========================================================= */
+
+.skillora-instructor-card {
+    width: 100%;
+    height: auto;
+    min-height: 390px;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    text-align: center;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+.skillora-instructor-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.10);
+}
+
+
+/* =========================================================
+   PHOTO
+   ========================================================= */
+
+.skillora-instructor-image {
+    width: 100%;
+    height: 210px;
+
+    overflow: hidden;
+
+    background: #f1f5f4;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.skillora-instructor-photo {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+}
+
+
+/* Avatar si aucune photo */
+.skillora-default-avatar {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #eef7f4;
+    color: #0f8f6d;
+
+    font-size: 55px;
+}
+
+
+/* =========================================================
+   INFORMATIONS FORMATEUR
+   ========================================================= */
+
+.skillora-instructor-info {
+    padding: 18px 15px 10px;
+}
+
+.skillora-instructor-info h3 {
+    margin: 0 0 7px;
+
+    font-size: 20px;
+    line-height: 28px;
+
+    font-weight: 700;
+
+    color: #0b104a;
+}
+
+.skillora-speciality {
+    display: block;
+
+    font-size: 14px;
+    line-height: 20px;
+
+    color: #525fe1;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   STATISTIQUES
+   ========================================================= */
+
+.skillora-instructor-footer {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 25px;
+
+    padding: 12px 15px 18px;
+
+    border-top: 1px solid #eeeeee;
+}
+
+.skillora-instructor-stat {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    text-align: left;
+}
+
+.skillora-instructor-stat > i {
+    font-size: 18px;
+    color: #525fe1;
+}
+
+.skillora-instructor-stat strong {
+    display: block;
+
+    font-size: 16px;
+    line-height: 20px;
+
+    font-weight: 700;
+
+    color: #0b104a;
+}
+
+.skillora-instructor-stat small {
+    display: block;
+
+    font-size: 11px;
+    line-height: 15px;
+
+    color: #777;
+}
+
+
+/* =========================================================
+   BIOGRAPHIE
+   ========================================================= */
+
+.skillora-instructor-bio {
+    padding: 0 15px 18px;
+
+    font-size: 13px;
+    line-height: 20px;
+
+    color: #666;
+}
+
+
+/* =========================================================
+   BOUTONS PRECEDENT / SUIVANT
+   ========================================================= */
+
+.skillora-team-btn {
+    position: absolute;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    z-index: 10;
+
+    width: 45px;
+    height: 45px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #525fe1;
+    color: #ffffff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    box-shadow: 0 5px 15px rgba(82, 95, 225, 0.25);
+
+    transition: all 0.3s ease;
+}
+
+.skillora-team-btn:hover {
+    background: #f26b65;
+    color: #ffffff;
+}
+
+.skillora-team-prev {
+    left: -55px;
+}
+
+.skillora-team-next {
+    right: -55px;
+}
+
+.skillora-team-btn i {
+    font-size: 16px;
+}
+
+
+/* =========================================================
+   POINTS
+   ========================================================= */
+
+.skillora-team-dots {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 8px;
+
+    margin-top: 25px;
+}
+
+.skillora-team-dot {
+    width: 9px;
+    height: 9px;
+
+    padding: 0;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #d6d9e8;
+
+    cursor: pointer;
+}
+
+.skillora-team-dot.active {
+    width: 25px;
+    border-radius: 10px;
+
+    background: #525fe1;
+}
+
+
+/* =========================================================
+   TABLETTE
+   ========================================================= */
+
+@media only screen and (max-width: 1100px) {
+
+    .skillora-team-slide {
+        flex: 0 0 calc((100% - 40px) / 3);
+    }
+
+    .skillora-team-prev {
+        left: -20px;
+    }
+
+    .skillora-team-next {
+        right: -20px;
+    }
+}
+
+
+/* =========================================================
+   TABLETTE PETITE
+   ========================================================= */
+
+@media only screen and (max-width: 768px) {
+
+    .skillora-team-area {
+        padding: 60px 0;
+    }
+
+    .skillora-team-area .skillora-section-title {
+        font-size: 34px;
+    }
+
+    .skillora-team-area .section-title h2 {
+        font-size: 28px;
+        line-height: 36px;
+    }
+
+    .skillora-team-area .section-title p {
+        width: 90%;
+    }
+
+    .skillora-team-slide {
+        flex: 0 0 calc((100% - 20px) / 2);
+    }
+
+    .skillora-team-btn {
+        width: 40px;
+        height: 40px;
+    }
+
+    .skillora-team-prev {
+        left: -10px;
+    }
+
+    .skillora-team-next {
+        right: -10px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media only screen and (max-width: 575px) {
+
+    .skillora-team-area {
+        padding: 50px 0;
+    }
+
+    .skillora-team-area .skillora-section-title {
+        font-size: 30px;
+    }
+
+    .skillora-team-area .section-title h2 {
+        font-size: 25px;
+        line-height: 34px;
+    }
+
+    .skillora-team-area .section-title p {
+        width: 100%;
+        font-size: 14px;
+        line-height: 22px;
+    }
+
+    .skillora-team-slide {
+        flex: 0 0 100%;
+    }
+
+    .skillora-instructor-image {
+        height: 230px;
+    }
+
+    .skillora-instructor-card {
+        min-height: 400px;
+    }
+
+    .skillora-team-prev {
+        left: 5px;
+    }
+
+    .skillora-team-next {
+        right: 5px;
+    }
+
+}
+
+
+/* ==========================================
+   SKILLORA FOOTER
+========================================== */
+
+.skillora-footer {
+    background: #102a2a;
+    padding: 80px 0 60px;
+    color: #ffffff;
+}
+
+.skillora-footer-about {
+    padding-right: 30px;
+}
+
+.skillora-footer-logo {
+    display: inline-block;
+    margin-bottom: 25px;
+}
+
+.skillora-footer-logo img {
+    max-width: 180px;
+    height: auto;
+}
+
+.skillora-footer-about p {
+    color: #cbd8d6;
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 12px;
+}
+
+.skillora-footer-about strong {
+    color: #f4b942;
+}
+
+
+/* ==========================================
+   FOOTER WIDGET
+========================================== */
+
+.skillora-footer-widget h4 {
+    color: #ffffff;
+    font-size: 19px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    position: relative;
+    padding-bottom: 12px;
+}
+
+.skillora-footer-widget h4::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 40px;
+    height: 3px;
+    background: #f4b942;
+    border-radius: 3px;
+}
+
+.skillora-footer-widget ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.skillora-footer-widget ul li {
+    margin-bottom: 12px;
+}
+
+.skillora-footer-widget ul li a {
+    color: #cbd8d6;
+    font-size: 15px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.skillora-footer-widget ul li a:hover {
+    color: #f4b942;
+    padding-left: 5px;
+}
+
+
+/* ==========================================
+   SOCIAL NETWORKS
+========================================== */
+
+.skillora-social {
+    display: flex;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.skillora-social a {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 50%;
+    color: #ffffff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.skillora-social a:hover {
+    background: #f4b942;
+    border-color: #f4b942;
+    color: #102a2a;
+    transform: translateY(-3px);
+}
+
+
+/* ==========================================
+   CONTACT
+========================================== */
+
+.skillora-contact-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 18px;
+}
+
+.skillora-contact-item > span {
+    min-width: 35px;
+    color: #f4b942;
+    font-size: 17px;
+    padding-top: 2px;
+}
+
+.skillora-contact-item p {
+    margin: 0;
+    color: #cbd8d6;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.skillora-contact-item a {
+    color: #cbd8d6;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.skillora-contact-item a:hover {
+    color: #f4b942;
+}
+
+
+/* ==========================================
+   COPYRIGHT
+========================================== */
+
+.skillora-copyright {
+    background: #0b2020;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 20px 0;
+}
+
+.skillora-copyright p {
+    color: #9eafad;
+    margin: 0;
+    font-size: 14px;
+}
+
+.skillora-copyright strong {
+    color: #f4b942;
+}
+
+.skillora-copyright a {
+    color: #9eafad;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.skillora-copyright a:hover {
+    color: #f4b942;
+}
+
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width: 991px) {
+
+    .skillora-footer {
+        padding: 60px 0 40px;
+    }
+
+    .skillora-footer-about {
+        padding-right: 0;
+    }
+
+}
+
+
+@media (max-width: 767px) {
+
+    .skillora-footer {
+        padding: 50px 0 30px;
+    }
+
+    .skillora-footer-widget {
+        margin-top: 15px;
+    }
+
+    .skillora-copyright {
+        text-align: center;
+    }
+
+    .skillora-copyright .text-md-end {
+        margin-top: 10px;
+        text-align: center !important;
+    }
+
+}
+
+
+@media (max-width: 575px) {
+
+    .skillora-footer-logo img {
+        max-width: 150px;
+    }
+
+    .skillora-footer-about p {
+        font-size: 14px;
+    }
+
+    .skillora-footer-widget h4 {
+        font-size: 18px;
+    }
+
+}

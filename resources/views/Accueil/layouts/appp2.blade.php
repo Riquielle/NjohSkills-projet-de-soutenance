@@ -112,6 +112,25 @@
             margin-left: 0;
             padding: 15px;
         }
+
+        /* Overlay pour fermer le menu en cliquant sur l'écran */
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1040;
+        }
+
+        /* Affiche l'overlay sur mobile lorsque le menu est ouvert */
+        @media (max-width: 991.98px) {
+            .sidebar-overlay.show {
+                display: block;
+            }
+        }
     }
 </style>
 

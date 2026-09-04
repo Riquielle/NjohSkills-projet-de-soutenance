@@ -5,6 +5,8 @@
 
 <!-- Votre Sidebar avec vos classes personnalisées -->
 <div class="sidebar" id="mySidebar">
+    <!-- Fond sombre pour fermer le menu au clic sur l'écran -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
     <div class="logo">
         <a class="text-decoration-none" href="/">
             <span style="color:#ffffff;">Skill</span><span style="color:#28a745;">Ora</span>
@@ -47,15 +49,30 @@
 </div>
 
 <!-- Script pour ouvrir le menu sur mobile -->
+
+
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const toggleBtn = document.getElementById('toggleSidebar');
         const sidebar = document.getElementById('mySidebar');
+        const overlay = document.getElementById('sidebarOverlay');
 
+        function closeSidebar() {
+            sidebar.classList.remove('show');
+            overlay.classList.remove('show');
+        }
+
+        // Ouvrir / Fermer au clic sur le bouton Burger
         if (toggleBtn && sidebar) {
             toggleBtn.addEventListener('click', function () {
                 sidebar.classList.toggle('show');
+                if (overlay) overlay.classList.toggle('show');
             });
+        }
+
+        // Fermer au clic n'importe où sur l'écran (l'overlay)
+        if (overlay) {
+            overlay.addEventListener('click', closeSidebar);
         }
     });
 </script>
