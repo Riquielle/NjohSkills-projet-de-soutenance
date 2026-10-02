@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
+use Illuminate\Http\Request;
+use App\Models\User;
+
+
 use App\Http\Controllers\AccueilController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardapController;
@@ -27,6 +32,7 @@ use App\Http\Controllers\AdminInscriptionController;
 use App\Http\Controllers\AdminPaiementController;
 use App\Http\Controllers\AdminStatistiqueController;
 use App\Http\Controllers\AdminParametreController;
+use App\Http\Controllers\MessageController;
 
 
 
@@ -34,18 +40,30 @@ use App\Http\Controllers\AdminParametreController;
 
 
 Route::group(['middleware' => 'auth'],function () {
-    Route::get('/dashboard_ap',[DashboardapController::class,'dashboard_ap'])->name('dashboard_ap');
-    Route::get('/dashboard_fo',[DashboardfoController::class,'dashboard_fo'])->name('dashboard_fo');
-    Route::get('/A_formation',[FormationController::class,'A_formation'])->name('A_formation');
-    Route::post('/store',[FormationController::class,'store'])->name('store');
+    
+    Route::get('/dashboard_ap',
+        [DashboardapController::class, 'dashboard_ap'])
+        ->middleware([ 'verified'])
+        ->name('dashboard_ap');
+    
+
+    Route::get('/dashboard_fo',
+        [DashboardfoController::class, 'dashboard_fo'])
+        ->middleware(['verified'])
+        ->name('dashboard_fo');
+    Route::get('/A_formation',[FormationController::class,'A_formation'])
+        ->name('A_formation');
+    Route::post('/store',[FormationController::class,'store'])
+        ->name('store');
     Route::get('/Mes_formations',
     [FormationController::class,'Mes_formations'])
-    ->name('Mes_formations');
-    Route::get('/logout',[LoginController::class,'logout'])->name('logout');
+        ->name('Mes_formations');
+    Route::get('/logout',[LoginController::class,'logout'])
+        ->name('logout');
     Route::put('/formations/{id}', [FormationController::class, 'update'])
-    ->name('formations.update');
+        ->name('formations.update');
     Route::delete('/formations/{id}', [FormationController::class, 'destroy'])
-    ->name('formations.destroy');
+        ->name('formations.destroy');
 
     Route::get('/paiement/{id}', [PaiementController::class, 'paiement'])
         ->name('paiement');
@@ -53,9 +71,10 @@ Route::group(['middleware' => 'auth'],function () {
     Route::post('/paiement/{id}', [PaiementController::class, 'store'])
         ->name('paiement.store');
 
-    Route::get('/details_formations/{id}',[DashboardapController::class,'details_formations'])->name('details_formations');
+    Route::get('/details_formations/{id}',[DashboardapController::class,'details_formations'])
+        ->name('details_formations');
     Route::get('/ma_formation/{id}', [ApprenantController::class, 'ma_Formation'])
-    ->name('ma_formation');
+        ->name('ma_formation');
 
     Route::get('/formations/{formation}/modules',
         [ModuleController::class,'module'])
@@ -264,6 +283,106 @@ Route::group(['middleware' => 'auth'],function () {
     
 });
 
+// Messagerie apprenant
+    Route::get('/messages/apprenant', [
+        MessageController::class,
+        'conversation'
+    ])->name('messages.apprenant');
+
+    // Conversation apprenant avec un formateur
+    Route::get('/messages/apprenant/{formateurId}', [
+        MessageController::class,
+        'conversation'
+    ])->name('messages.apprenant.conversation');
+
+
+    // Messagerie formateur
+    Route::get('/messages/formateur', [
+        MessageController::class,
+        'conversation'
+    ])->name('messages.formateur');
+
+    // Conversation formateur avec un apprenant
+    Route::get('/messages/formateur/{apprenantId}', [
+        MessageController::class,
+        'conversation'
+    ])->name('messages.formateur.conversation');
+
+
+    // Envoi d'un message
+    Route::post('/messages/envoyer', [
+        MessageController::class,
+        'envoyer'
+    ])->name('messages.envoyer');
+
+
+
+
+Route::get('/email/verify', function () {
+    return view('verify-email');
+})->name('verification.notice');
+
+
+
+Route::get('/email/verify/{id}/{hash}', function (Request $request, $id, $hash) {
+
+    $user = User::findOrFail($id);
+
+    if (!hash_equals(
+        sha1($user->getEmailForVerification()),
+        $hash
+    )) {
+        abort(403, 'Lien de vérification invalide.');
+    }
+
+    if (!$user->hasVerifiedEmail()) {
+        $user->markEmailAsVerified();
+    }
+
+    return redirect()
+        ->route('sign_in')
+        ->with(
+            'success',
+            'Votre adresse e-mail a été vérifiée avec succès. Vous pouvez maintenant vous connecter.'
+        );
+
+})->middleware('signed')
+  ->name('verification.verify');
+
+
+Route::post('/email/verification-notification', function (Request $request) {
+
+    $request->validate([
+        'email' => 'required|email'
+    ]);
+
+    $user = User::where('email', $request->email)->first();
+
+    if (!$user) {
+        return back()->with(
+            'error',
+            'Aucun compte ne correspond à cette adresse e-mail.'
+        );
+    }
+
+    if ($user->hasVerifiedEmail()) {
+        return back()->with(
+            'message',
+            'Cette adresse e-mail est déjà vérifiée. Vous pouvez vous connecter.'
+        );
+    }
+
+    $user->sendEmailVerificationNotification();
+
+    return back()->with(
+        'message',
+        'Un nouveau lien de vérification a été envoyé à votre adresse e-mail.'
+    );
+
+})->middleware('throttle:6,1')
+  ->name('verification.send');
+
+
 Route::get('/certificat/verifier/{numeroCertificat}', 
     [CertificatController::class, 'verifier']
 )->name('verification');
@@ -271,9 +390,12 @@ Route::get('/certificat/verifier/{numeroCertificat}',
 
 Route::middleware(['auth', 'admin'])->group(function () {
 
+    
+
     Route::get('/admin/dashboard',
-        [AdminController::class, 'dashboard']
-    )->name('admin.dashboard');
+        [AdminController::class, 'dashboard'])
+        ->middleware([ 'verified'])
+        ->name('admin.dashboard');
 
 
     // ================= APPRENANTS =================

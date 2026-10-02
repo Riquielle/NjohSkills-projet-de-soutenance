@@ -45,7 +45,8 @@ class QuestionController extends Controller
             'ordre'=>$ordre
 
         ]);
-        $formation->verifierPublication();
+
+        
 
         $reponses = [
 
@@ -69,6 +70,15 @@ class QuestionController extends Controller
 
             ]);
 
+
+
+        }
+
+        // Remonter jusqu'à la formation
+        $formation = $quiz->module->formation;
+
+        if ($formation) {
+            $formation->verifierPublication();
         }
 
         return back()->with('success','Question ajoutée avec succès.');

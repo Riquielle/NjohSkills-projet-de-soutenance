@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
 
     <title>Certificat de réussite</title>
 
     <style>
+
+        /* =====================================================
+           CONFIGURATION PDF
+        ===================================================== */
 
         @page {
             size: A4 landscape;
@@ -30,24 +35,30 @@
             color: #333;
         }
 
-        /* =========================
-           PAGE DU CERTIFICAT
-        ========================= */
+
+        /* =====================================================
+           PAGE CERTIFICAT
+        ===================================================== */
 
         .certificate {
+            position: relative;
+
             width: 297mm;
             height: 210mm;
-            position: relative;
+
             background: #fffdf8;
-            padding: 12mm;
+
+            overflow: hidden;
         }
 
-        /* =========================
-           BORDURES
-        ========================= */
+
+        /* =====================================================
+           BORDURE EXTERIEURE
+        ===================================================== */
 
         .outer-border {
             position: absolute;
+
             top: 7mm;
             left: 7mm;
             right: 7mm;
@@ -56,8 +67,14 @@
             border: 3px solid #198754;
         }
 
+
+        /* =====================================================
+           BORDURE INTERIEURE
+        ===================================================== */
+
         .inner-border {
             position: absolute;
+
             top: 11mm;
             left: 11mm;
             right: 11mm;
@@ -66,332 +83,10 @@
             border: 1px solid #c9a227;
         }
 
-        /* =========================
-           CONTENU CENTRAL
-        ========================= */
 
-        .content {
-            position: relative;
-            z-index: 10;
-
-            width: 245mm;
-
-            margin: 0 auto;
-
-            text-align: center;
-
-            padding-top: 10mm;
-        }
-
-        /* =========================
-           NOM PLATEFORME
-        ========================= */
-
-        .brand {
-            font-size: 21px;
-            font-weight: bold;
-
-            letter-spacing: 5px;
-
-            color: #198754;
-
-            text-transform: uppercase;
-
-            margin-bottom: 3mm;
-        }
-
-        .gold-line {
-            width: 55mm;
-            height: 1px;
-
-            background: #c9a227;
-
-            margin: 0 auto 5mm auto;
-        }
-
-        /* =========================
-           SOUS-TITRE
-        ========================= */
-
-        .small-title {
-            font-size: 10px;
-
-            letter-spacing: 3px;
-
-            text-transform: uppercase;
-
-            color: #777;
-
-            margin-bottom: 3mm;
-        }
-
-        /* =========================
-           TITRE
-        ========================= */
-
-        .title {
-            font-family: DejaVu Serif, serif;
-
-            font-size: 30px;
-
-            font-weight: bold;
-
-            letter-spacing: 2px;
-
-            color: #1b5e20;
-
-            margin-bottom: 4mm;
-        }
-
-        /* =========================
-           TEXTE
-        ========================= */
-
-        .intro {
-            font-size: 12px;
-
-            color: #555;
-
-            margin-bottom: 3mm;
-        }
-
-        /* =========================
-           NOM APPRENANT
-        ========================= */
-
-        .student-name {
-            font-family: DejaVu Serif, serif;
-
-            font-size: 27px;
-
-            font-weight: bold;
-
-            color: #222;
-
-            margin-bottom: 2mm;
-        }
-
-        .student-line {
-            width: 90mm;
-
-            height: 1px;
-
-            background: #c9a227;
-
-            margin: 0 auto 5mm auto;
-        }
-
-        /* =========================
-           TEXTE FORMATION
-        ========================= */
-
-        .description {
-            font-size: 12px;
-
-            line-height: 1.5;
-
-            color: #555;
-
-            margin-bottom: 2mm;
-        }
-
-        /* =========================
-           NOM FORMATION
-        ========================= */
-
-        .formation {
-            font-family: DejaVu Serif, serif;
-
-            font-size: 20px;
-
-            font-weight: bold;
-
-            color: #198754;
-
-            margin: 2mm auto 3mm auto;
-
-            width: 210mm;
-        }
-
-        /* =========================
-           INFORMATIONS
-        ========================= */
-
-        .info-table {
-            width: 180mm;
-
-            margin: 3mm auto 4mm auto;
-
-            border-collapse: collapse;
-        }
-
-        .info-table td {
-            width: 33.33%;
-
-            text-align: center;
-
-            padding: 2mm 4mm;
-
-            border-right: 1px solid #ddd;
-        }
-
-        .info-table td:last-child {
-            border-right: none;
-        }
-
-        .info-label {
-            font-size: 8px;
-
-            text-transform: uppercase;
-
-            letter-spacing: 1px;
-
-            color: #888;
-
-            margin-bottom: 1mm;
-        }
-
-        .info-value {
-            font-size: 11px;
-
-            font-weight: bold;
-
-            color: #333;
-        }
-
-        /* =========================
-           SCEAU
-        ========================= */
-
-        .seal {
-            width: 18mm;
-            height: 18mm;
-
-            border: 2px solid #c9a227;
-
-            border-radius: 50%;
-
-            margin: 1mm auto 2mm auto;
-
-            padding-top: 5mm;
-
-            color: #198754;
-
-            font-size: 6px;
-
-            font-weight: bold;
-
-            text-align: center;
-        }
-
-        /* =========================
-           DATE
-        ========================= */
-
-        .date {
-            font-size: 9px;
-
-            color: #777;
-
-            margin-top: 1mm;
-        }
-
-        /* =========================
-           PARTIE BASSE
-        ========================= */
-
-        .bottom {
-            position: absolute;
-
-            left: 25mm;
-            right: 25mm;
-
-            bottom: 16mm;
-
-            z-index: 20;
-        }
-
-        .bottom-table {
-            width: 100%;
-
-            border-collapse: collapse;
-        }
-
-        .bottom-table td {
-            text-align: center;
-
-            vertical-align: bottom;
-        }
-
-        /* =========================
-           SIGNATURES
-        ========================= */
-
-        .signature {
-            width: 35%;
-        }
-
-        .signature-space {
-            height: 8mm;
-        }
-
-        .signature-line {
-            width: 50mm;
-
-            height: 1px;
-
-            background: #555;
-
-            margin: 0 auto 2mm auto;
-        }
-
-        .signature-name {
-            font-size: 9px;
-
-            font-weight: bold;
-
-            color: #333;
-        }
-
-        .signature-role {
-            font-size: 8px;
-
-            color: #777;
-
-            margin-top: 1mm;
-        }
-
-        /* =========================
-           NUMERO CERTIFICAT
-        ========================= */
-
-        .number {
-            width: 30%;
-        }
-
-        .number-label {
-            font-size: 7px;
-
-            color: #888;
-
-            text-transform: uppercase;
-
-            letter-spacing: 1px;
-        }
-
-        .number-value {
-            font-size: 9px;
-
-            font-weight: bold;
-
-            color: #198754;
-
-            margin-top: 2mm;
-        }
-
-        /* =========================
+        /* =====================================================
            COINS DECORATIFS
-        ========================= */
+        ===================================================== */
 
         .corner {
             position: absolute;
@@ -435,124 +130,593 @@
         }
 
 
-        /* =========================
-   QR CODE
-========================= */
+        /* =====================================================
+           CONTENU CENTRAL
+        ===================================================== */
 
-.qr-code {
-    position: absolute;
+        .content {
+            position: relative;
 
-    right: 18mm;
-    bottom: 17mm;
+            z-index: 10;
 
-    width: 28mm;
+            width: 245mm;
 
-    text-align: center;
+            margin: 0 auto;
 
-    z-index: 50;
-}
+            text-align: center;
 
-.qr-code img {
-    width: 23mm;
-    height: 23mm;
+            padding-top: 14mm;
+        }
 
-    display: block;
 
-    margin: 0 auto;
-}
+        /* =====================================================
+           LOGO / NOM SKILLORA
+        ===================================================== */
 
-.qr-label {
-    font-size: 7px;
+        .brand {
+            font-size: 21px;
 
-    color: #777;
+            font-weight: bold;
 
-    margin-top: 1mm;
+            letter-spacing: 5px;
 
-    line-height: 1.2;
-}
+            color: #198754;
 
-.qr-number {
-    font-size: 6px;
+            text-transform: uppercase;
 
-    color: #198754;
+            margin-bottom: 3mm;
+        }
 
-    margin-top: 1mm;
 
-    font-weight: bold;
-}
+        .gold-line {
+            width: 55mm;
+
+            height: 1px;
+
+            background: #c9a227;
+
+            margin: 0 auto 5mm auto;
+        }
+
+
+        /* =====================================================
+           SOUS TITRE
+        ===================================================== */
+
+        .small-title {
+            font-size: 10px;
+
+            letter-spacing: 3px;
+
+            text-transform: uppercase;
+
+            color: #777;
+
+            margin-bottom: 3mm;
+        }
+
+
+        /* =====================================================
+           TITRE
+        ===================================================== */
+
+        .title {
+            font-family: DejaVu Serif, serif;
+
+            font-size: 30px;
+
+            font-weight: bold;
+
+            letter-spacing: 2px;
+
+            color: #1b5e20;
+
+            margin-bottom: 4mm;
+        }
+
+
+        /* =====================================================
+           INTRODUCTION
+        ===================================================== */
+
+        .intro {
+            font-size: 12px;
+
+            color: #555;
+
+            margin-bottom: 3mm;
+        }
+
+
+        /* =====================================================
+           NOM APPRENANT
+        ===================================================== */
+
+        .student-name {
+            font-family: DejaVu Serif, serif;
+
+            font-size: 27px;
+
+            font-weight: bold;
+
+            color: #222;
+
+            margin-bottom: 2mm;
+        }
+
+
+        .student-line {
+            width: 90mm;
+
+            height: 1px;
+
+            background: #c9a227;
+
+            margin: 0 auto 5mm auto;
+        }
+
+
+        /* =====================================================
+           DESCRIPTION
+        ===================================================== */
+
+        .description {
+            font-size: 12px;
+
+            line-height: 1.5;
+
+            color: #555;
+
+            margin-bottom: 2mm;
+        }
+
+
+        /* =====================================================
+           FORMATION
+        ===================================================== */
+
+        .formation {
+            font-family: DejaVu Serif, serif;
+
+            font-size: 20px;
+
+            font-weight: bold;
+
+            color: #198754;
+
+            margin: 2mm auto 3mm auto;
+
+            width: 210mm;
+        }
+
+
+        /* =====================================================
+           INFORMATIONS
+        ===================================================== */
+
+        .info-table {
+            width: 180mm;
+
+            margin: 3mm auto 3mm auto;
+
+            border-collapse: collapse;
+        }
+
+        .info-table td {
+            width: 33.33%;
+
+            text-align: center;
+
+            padding: 2mm 4mm;
+
+            border-right: 1px solid #ddd;
+        }
+
+        .info-table td:last-child {
+            border-right: none;
+        }
+
+
+        .info-label {
+            font-size: 8px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+
+            color: #888;
+
+            margin-bottom: 1mm;
+        }
+
+
+        .info-value {
+            font-size: 11px;
+
+            font-weight: bold;
+
+            color: #333;
+        }
+
+
+        /* =====================================================
+           SCEAU SKILLORA
+        ===================================================== */
+
+        .seal {
+            width: 18mm;
+            height: 18mm;
+
+            border: 2px solid #c9a227;
+
+            border-radius: 50%;
+
+            margin: 1mm auto 1mm auto;
+
+            padding-top: 5mm;
+
+            color: #198754;
+
+            font-size: 6px;
+
+            font-weight: bold;
+
+            text-align: center;
+        }
+
+
+        /* =====================================================
+           DATE
+        ===================================================== */
+
+        .date {
+            font-size: 9px;
+
+            color: #777;
+
+            margin-top: 1mm;
+        }
+
+
+        /* =====================================================
+           PARTIE BASSE
+        ===================================================== */
+
+        .bottom {
+            position: absolute;
+
+            left: 24mm;
+
+            right: 45mm;
+
+            bottom: 13mm;
+
+            z-index: 40;
+        }
+
+
+        .bottom-table {
+            width: 100%;
+
+            border-collapse: collapse;
+
+            table-layout: fixed;
+        }
+
+
+        .bottom-table td {
+            text-align: center;
+
+            vertical-align: bottom;
+
+            padding: 0 5mm;
+        }
+
+
+        /* =====================================================
+           BLOC SIGNATURE
+        ===================================================== */
+
+        .signature {
+            width: 38%;
+        }
+
+
+        .signature-title {
+            font-size: 8px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+
+            color: #777;
+
+            margin-bottom: 1mm;
+        }
+
+
+        /* ESPACE POUR LA SIGNATURE */
+
+        .signature-space {
+            height: 14mm;
+
+            width: 70mm;
+
+            margin: 0 auto;
+
+            position: relative;
+        }
+
+
+        .signature-line {
+            width: 60mm;
+
+            height: 1px;
+
+            background: #555;
+
+            margin: 0 auto 2mm auto;
+        }
+
+
+        .signature-name {
+            font-size: 9px;
+
+            font-weight: bold;
+
+            color: #333;
+        }
+
+
+        .signature-role {
+            font-size: 8px;
+
+            color: #777;
+
+            margin-top: 1mm;
+        }
+
+
+        /* =====================================================
+           ZONE CACHET
+        ===================================================== */
+
+        .stamp-area {
+            height: 14mm;
+
+            width: 50mm;
+
+            margin: 0 auto;
+
+            position: relative;
+        }
+
+
+        .stamp-circle {
+            width: 18mm;
+
+            height: 18mm;
+
+            border: 1px dashed #c9a227;
+
+            border-radius: 50%;
+
+            margin: -2mm auto 0 auto;
+
+            text-align: center;
+
+            padding-top: 6mm;
+
+            color: #c9a227;
+
+            font-size: 6px;
+
+            font-weight: bold;
+
+            text-transform: uppercase;
+        }
+
+
+        /* =====================================================
+           NUMERO CERTIFICAT
+        ===================================================== */
+
+        .number {
+            width: 24%;
+        }
+
+
+        .number-label {
+            font-size: 7px;
+
+            color: #888;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+        }
+
+
+        .number-value {
+            font-size: 9px;
+
+            font-weight: bold;
+
+            color: #198754;
+
+            margin-top: 2mm;
+        }
+
+
+        /* =====================================================
+           QR CODE
+        ===================================================== */
+
+        .qr-code {
+            position: absolute;
+
+            right: 17mm;
+
+            bottom: 13mm;
+
+            width: 28mm;
+
+            text-align: center;
+
+            z-index: 60;
+        }
+
+
+        .qr-code img {
+            width: 23mm;
+
+            height: 23mm;
+
+            display: block;
+
+            margin: 0 auto;
+        }
+
+
+        .qr-label {
+            font-size: 6px;
+
+            color: #777;
+
+            margin-top: 1mm;
+
+            line-height: 1.2;
+        }
+
+
+        .qr-number {
+            font-size: 5.5px;
+
+            color: #198754;
+
+            margin-top: 1mm;
+
+            font-weight: bold;
+        }
+
+
+        /* =====================================================
+           PETITE LIGNE DECORATIVE BASSE
+        ===================================================== */
+
+        .bottom-decoration {
+            position: absolute;
+
+            left: 70mm;
+
+            right: 70mm;
+
+            bottom: 9mm;
+
+            height: 1px;
+
+            background: #c9a227;
+
+            opacity: 0.5;
+
+            z-index: 20;
+        }
 
     </style>
+
 </head>
+
 
 <body>
 
 <div class="certificate">
 
-    <!-- =========================
+
+    <!-- =====================================================
          BORDURES
-    ========================== -->
+    ===================================================== -->
 
     <div class="outer-border"></div>
 
     <div class="inner-border"></div>
 
 
-    <!-- =========================
+    <!-- =====================================================
          COINS
-    ========================== -->
+    ===================================================== -->
 
     <div class="corner corner-tl"></div>
+
     <div class="corner corner-tr"></div>
+
     <div class="corner corner-bl"></div>
+
     <div class="corner corner-br"></div>
 
 
-    <!-- =========================
+    <!-- =====================================================
          CONTENU CENTRAL
-    ========================== -->
+    ===================================================== -->
 
     <div class="content">
+
+
+        <!-- SKILLORA -->
 
         <div class="brand">
             SKILLORA
         </div>
 
+
         <div class="gold-line"></div>
 
+
+        <!-- SOUS TITRE -->
 
         <div class="small-title">
             Plateforme de formation aux compétences pratiques
         </div>
 
 
+        <!-- TITRE -->
+
         <div class="title">
             CERTIFICAT DE RÉUSSITE
         </div>
 
+
+        <!-- INTRO -->
 
         <div class="intro">
             Ce certificat est officiellement décerné à
         </div>
 
 
-        <!-- APPRENANT -->
+        <!-- =================================================
+             APPRENANT
+        ================================================== -->
 
         <div class="student-name">
             {{ $apprenant->name }}
         </div>
 
+
         <div class="student-line"></div>
 
 
-        <!-- DESCRIPTION -->
+        <!-- =================================================
+             DESCRIPTION
+        ================================================== -->
 
         <div class="description">
-            Pour avoir suivi avec succès et achevé l'ensemble des activités
-            pédagogiques de la formation :
+            Pour avoir suivi avec succès et achevé l'ensemble
+            des activités pédagogiques de la formation :
         </div>
 
 
-        <!-- FORMATION -->
+        <!-- =================================================
+             FORMATION
+        ================================================== -->
 
         <div class="formation">
             {{ $formation->titre }}
@@ -560,18 +724,20 @@
 
 
         <div class="description">
-            et avoir satisfait aux exigences de validation prévues par
-            la plateforme SkillOra.
+            et avoir satisfait aux exigences de validation
+            prévues par la plateforme SkillOra.
         </div>
 
 
-        <!-- =========================
+        <!-- =================================================
              INFORMATIONS
-        ========================== -->
+        ================================================== -->
 
         <table class="info-table">
 
             <tr>
+
+                <!-- FORMATEUR -->
 
                 <td>
 
@@ -596,6 +762,8 @@
                 </td>
 
 
+                <!-- DUREE -->
+
                 <td>
 
                     <div class="info-label">
@@ -608,6 +776,8 @@
 
                 </td>
 
+
+                <!-- DATE -->
 
                 <td>
 
@@ -626,14 +796,16 @@
         </table>
 
 
-        <!-- =========================
+        <!-- =================================================
              SCEAU
-        ========================== -->
+        ================================================== -->
 
         <div class="seal">
             SKILLORA
         </div>
 
+
+        <!-- DATE DE DELIVRANCE -->
 
         <div class="date">
 
@@ -642,12 +814,13 @@
 
         </div>
 
+
     </div>
 
 
-    <!-- =========================
-         SIGNATURES
-    ========================== -->
+    <!-- =====================================================
+         PARTIE BASSE : SIGNATURES
+    ===================================================== -->
 
     <div class="bottom">
 
@@ -655,13 +828,30 @@
 
             <tr>
 
-                <!-- FORMATEUR -->
+
+                <!-- =================================================
+                     SIGNATURE FORMATEUR
+                ================================================== -->
 
                 <td class="signature">
 
-                    <div class="signature-space"></div>
+                    <div class="signature-title">
+                        Signature du formateur
+                    </div>
+
+
+                    <!-- GRAND ESPACE BLANC -->
+
+                    <div class="signature-space">
+                    </div>
+
+
+                    <!-- LIGNE SIGNATURE -->
 
                     <div class="signature-line"></div>
+
+
+                    <!-- NOM FORMATEUR -->
 
                     <div class="signature-name">
 
@@ -677,20 +867,24 @@
 
                     </div>
 
+
                     <div class="signature-role">
-                        Formateur
+                        Formateur SkillOra
                     </div>
 
                 </td>
 
 
-                <!-- NUMERO -->
+                <!-- =================================================
+                     NUMERO CERTIFICAT
+                ================================================== -->
 
                 <td class="number">
 
                     <div class="number-label">
                         Numéro du certificat
                     </div>
+
 
                     <div class="number-value">
                         {{ $numeroCertificat }}
@@ -699,17 +893,39 @@
                 </td>
 
 
-                <!-- ADMINISTRATION -->
+                <!-- =================================================
+                     ADMINISTRATION + CACHET
+                ================================================== -->
 
                 <td class="signature">
 
-                    <div class="signature-space"></div>
+                    <div class="signature-title">
+                        Cachet et signature
+                    </div>
+
+
+                    <!-- ESPACE CACHEt -->
+
+                    <div class="stamp-area">
+
+                        <div class="stamp-circle">
+                            SKILLORA
+                        </div>
+
+                    </div>
+
+
+                    <!-- LIGNE -->
 
                     <div class="signature-line"></div>
+
+
+                    <!-- ADMINISTRATION -->
 
                     <div class="signature-name">
                         SKILLORA
                     </div>
+
 
                     <div class="signature-role">
                         Administration
@@ -717,39 +933,51 @@
 
                 </td>
 
+
             </tr>
 
         </table>
 
     </div>
 
-    {{-- =========================
-     QR CODE
-========================= --}}
 
-@if(isset($qrCode))
+    <!-- =====================================================
+         DECORATION BASSE
+    ===================================================== -->
 
-    <div class="qr-code">
+    <div class="bottom-decoration"></div>
 
-        
-        <img
+
+    <!-- =====================================================
+         QR CODE
+    ===================================================== -->
+
+    @if(isset($qrCode))
+
+        <div class="qr-code">
+
+            <img
                 src="data:image/png;base64,{{ $qrCode }}"
                 alt="QR Code"
-                style="width: 35mm; height: 35mm;"
             >
-        <div class="qr-label">
-            Scanner pour vérifier
+
+
+            <div class="qr-label">
+                Scanner pour vérifier
+            </div>
+
+
+            <div class="qr-number">
+                {{ $numeroCertificat }}
+            </div>
+
         </div>
 
-        <div class="qr-number">
-            {{ $numeroCertificat }}
-        </div>
+    @endif
 
-    </div>
-
-@endif
 
 </div>
 
 </body>
+
 </html>

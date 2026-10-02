@@ -59,7 +59,7 @@
 								<li class="menu-item-has-children"><a href="#">Accueil</a>
 									<ul>                                        
 										<li><a href="{{ route('home') }}">Accueil 01</a></li>
-										<li><a href="{{ route('home2') }}">Accueil 02</a></li>
+										
 									</ul>
 								</li>
 								<li><a href="{{ route('about') }}">A propos</a></li>                                  
@@ -69,10 +69,10 @@
 									</ul>
 								</li>                               
 								                         
-								<li class="menu-item-has-children"><a href="blog.html">Blog</a>
+								<li class="menu-item-has-children"><a href="blog.html">Cours gratuits</a>
 									<ul>                                        
-										<li><a href="blog.html">Blog</a></li>
-										<li><a href="blog_single.html">Blog Details</a></li>
+										<li><a href="blog.html">Création d'entreprise</a></li>
+										
 									</ul>
 								</li>                             
 								

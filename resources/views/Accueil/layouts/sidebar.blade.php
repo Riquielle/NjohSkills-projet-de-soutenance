@@ -33,6 +33,14 @@
         <i class="fas fa-award"></i> Mes certificats
     </a>
 
+    <a class="{{ request()->routeIs('messages.apprenant') ? 'active' : '' }}" href="{{ route('messages.apprenant') }}">
+
+        <i class="fas fa-comments"></i><span>Messages</span>
+
+    </a>
+           
+
+
     <a class="nav-link {{ request()->routeIs('assistant_ia') ? 'active' : '' }}" href="{{ route('assistant_ia') }}">
         <i class="fas fa-robot"></i> Assistant IA
     </a>

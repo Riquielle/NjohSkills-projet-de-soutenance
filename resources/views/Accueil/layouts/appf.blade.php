@@ -11,6 +11,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
           rel="stylesheet">
 
+    <link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
     <!-- Font Awesome -->
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -814,8 +817,8 @@
 
 
             <li>
-                <a class="{{ request()->routeIs('messages_formateur') ? 'active' : '' }}"
-                   href="#">
+                <a class="{{ request()->routeIs('messages.formateur') ? 'active' : '' }}"
+                   href="{{ route('messages.formateur') }}">
 
                     <i class="fas fa-comments"></i>
 

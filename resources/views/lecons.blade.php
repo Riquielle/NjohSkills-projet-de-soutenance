@@ -3,10 +3,7 @@
 @section('content')
 
 <div class="container py-5">
-
-    <div class="d-flex justify-content-between align-items-center mb-4">
-
-         @if(Session::has('success'))
+    @if(Session::has('success'))
             <div class="alert alert-success">
                 {{ Session::get('success') }}
             </div>
@@ -18,6 +15,9 @@
 			</div>
 		@endif
 
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+         
         <div class="d-flex align-items-center">
 
             <!-- Retour -->

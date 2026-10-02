@@ -10,7 +10,7 @@
 
     <h2 class="fw-bold">
 
-        Hello {{ $user->name }} 👋
+        Hello {{ $user->name }} 
 
     </h2>
 

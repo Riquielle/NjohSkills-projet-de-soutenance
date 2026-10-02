@@ -14,7 +14,8 @@ class Formation extends Model
         'apercu',
         'prix',
         'duree',
-        'image'
+        'image',
+        'statut'
     ];
 
     public function formateur()

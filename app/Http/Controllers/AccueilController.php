@@ -17,7 +17,9 @@ class AccueilController extends Controller
 
     $nombreFormateurs = Formateur::count();
 
-    $formations = Formation::with('formateur')->get();
+    $formations = Formation::where('statut', 'publie')
+                           ->with('formateur')
+                           ->get();
 
     $formateurs = Formateur::with('user')
         ->withCount('formations')
@@ -46,7 +48,9 @@ class AccueilController extends Controller
     public function formations()
     {
         // Récupère toutes les formations (ou filtrez selon vos besoins, par exemple avec ->latest()->get())
-        $formations = Formation::with('formateur')->get(); 
+        $formations = Formation::where('statut', 'publie')
+                       ->with('formateur')
+                       ->get();
 
         // On transmet la variable $formations à la vue
         return view('Accueil.formations', compact('formations'));

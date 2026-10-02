@@ -25,5 +25,17 @@ class Lecon extends Model
     {
         return $this->hasMany(Ressource::class);
     }
+
+    public function formation()
+    {
+        return $this->hasOneThrough(
+            Formation::class,
+            Module::class,
+            'id',
+            'id',
+            'module_id',
+            'formation_id'
+        );
+    }
     
 }

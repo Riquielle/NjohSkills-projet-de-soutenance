@@ -35,8 +35,13 @@ class LeconController extends Controller
             'description' => $request->description,
             'ordre' => $request->ordre,
         ]);
+        $formation = $module->formation;
 
-        $formation->verifierPublication();
+        if ($formation) {
+            $formation->verifierPublication();
+        }
+
+        
 
         return redirect()
                 ->back()

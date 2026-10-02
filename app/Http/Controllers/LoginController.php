@@ -44,6 +44,19 @@ class LoginController extends Controller
                         );
                 }
 
+                // Vérification de l'adresse e-mail
+                if (!$user->hasVerifiedEmail()) {
+
+                    Auth::logout();
+
+                    return redirect()
+                        ->route('sign_in')
+                        ->with(
+                            'error',
+                            'Votre adresse e-mail n’est pas encore vérifiée. Veuillez cliquer sur le lien envoyé dans votre boîte mail avant de vous connecter.'
+                        );
+                }
+
                 if ($user->role == 'apprenant') {
                     return redirect()->route('dashboard_ap');
                 }
@@ -91,39 +104,67 @@ class LoginController extends Controller
     }
 
 
-    public function processsign_upApprenant(Request $request){
+    public function processsign_upApprenant(Request $request)
+    {
         $validator = Validator::make($request->all(), [
-                'name' => 'required',
-                'email' => 'required|email|unique:users',
-                'password' => 'required|confirmed'
-            ]);
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => [
+                'required',
+                'confirmed',
+                \Illuminate\Validation\Rules\Password::min(8)
+                    ->mixedCase()
+                    ->numbers()
+                    ->symbols(),
+            ],
+        ]);
 
-            if($validator->passes()){
+        if ($validator->passes()) {
 
-               $user = new User();
-               $user->name = $request->name;
-               $user->email = $request->email;
-               $user->password = Hash::make($request->password);
-               $user->role = 'apprenant';
-               $user->save();
+            $user = new User();
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->password = Hash::make($request->password);
+            $user->role = 'apprenant';
+            $user->save();
 
-               return redirect()->route('sign_in')->with('success','Inscription réussie ! Connectez-vous.');
+            // Envoi de l'e-mail de vérification
+            $user->sendEmailVerificationNotification();
 
-            }else{
-                return redirect()->route('sign_up.apprenant')
-                    ->withInput()
-                    ->withErrors($validator)
-                    ->with('error', 'Inscription échouée, veuillez vérifier vos informations.');
-            }  
+            return redirect()
+                ->route('sign_in')
+                ->with(
+                    'success',
+                    'Inscription réussie ! Un e-mail de vérification a été envoyé à votre adresse. Vérifiez votre e-mail avant de vous connecter.'
+                );
+
+        } else {
+
+            return redirect()
+                ->route('sign_up.apprenant')
+                ->withInput()
+                ->withErrors($validator)
+                ->with(
+                    'error',
+                    'Inscription échouée, veuillez vérifier vos informations.'
+                );
+        }
     }
-        
-
+    
     public function processsign_upFormateur(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'required|email|unique:users',
-            'password' => 'required|confirmed',
+            'password' => [
+                'required',
+                'confirmed',
+                \Illuminate\Validation\Rules\Password::min(8)
+                    ->mixedCase()
+                    ->numbers()
+                    ->symbols(),
+            ],
+            
             'telephone' => 'required',
             'specialite' => 'required',
             'experience' => 'required',
@@ -139,7 +180,7 @@ class LoginController extends Controller
             $user->role = 'formateur';
             $user->save();
 
-            // 🔥 insertion des infos formateur dans la table formateurs
+            // Insertion des informations du formateur
             $formateur = new Formateur();
             $formateur->user_id = $user->id;
             $formateur->telephone = $request->telephone;
@@ -148,17 +189,28 @@ class LoginController extends Controller
             $formateur->biographie = $request->biographie;
             $formateur->save();
 
-            return redirect()->route('sign_in')
-                ->with('success', 'Inscription réussie ! Connectez-vous.');
+            // Envoi de l'e-mail de vérification
+            $user->sendEmailVerificationNotification();
+
+            return redirect()
+                ->route('sign_in')
+                ->with(
+                    'success',
+                    'Inscription réussie ! Un e-mail de vérification a été envoyé à votre adresse. Vérifiez votre e-mail avant de vous connecter.'
+                );
 
         } else {
-            return redirect()->route('sign_up.formateur')
+
+            return redirect()
+                ->route('sign_up.formateur')
                 ->withInput()
                 ->withErrors($validator)
-                ->with('error', 'Inscription échouée, veuillez vérifier vos informations.');
+                ->with(
+                    'error',
+                    'Inscription échouée, veuillez vérifier vos informations.'
+                );
         }
     }
-        
     
     public function logout(Request $request){
         Auth::logout();

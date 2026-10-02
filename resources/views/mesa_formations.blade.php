@@ -99,7 +99,7 @@ style="width:{{ $formation->pivot->progression }}%">
 <br>
 
 
-<a href="#"
+<a href="{{ route('certificat',$formation->id) }}"
 class="btn btn-outline-success w-100">
 
 🏆 Télécharger mon certificat

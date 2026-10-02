@@ -72,7 +72,7 @@ Félicitations ! Vous avez validé cette formation.
 
 
 
-<a href="#"
+<a href="{{ route('certificat',$formation->id) }}"
 class="btn btn-outline-success w-100">
 
 

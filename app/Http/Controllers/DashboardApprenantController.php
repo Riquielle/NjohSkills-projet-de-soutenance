@@ -13,15 +13,20 @@ class DashboardApprenantController extends Controller
     {
         $user = Auth::user();
 
+
         $formations = $user->formations()
+            ->where('formations.statut', 'publie')
             ->with('formateur.user')
             ->get();
 
         $inscriptions = Inscription::with([
-            'formation.formateur.user'
-        ])
-        ->where('user_id', $user->id)
-        ->get();
+                'formation.formateur.user'
+            ])
+            ->where('user_id', $user->id)
+            ->whereHas('formation', function ($query) {
+                $query->where('statut', 'publie');
+            })
+            ->get();
 
         $formationsTotal = $inscriptions->count();
 

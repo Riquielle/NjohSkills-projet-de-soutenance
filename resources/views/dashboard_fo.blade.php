@@ -74,7 +74,7 @@
             <!-- HEADER -->
             <div class="mb-4">
 
-                <h2> {{ $user->name }} 👋</h2>
+                <h2> {{ $user->name }} </h2>
 
                 <p class="text-muted">
                     Bienvenue dans votre espace formateur - Spécialité :  {{ $formateur->specialite }}

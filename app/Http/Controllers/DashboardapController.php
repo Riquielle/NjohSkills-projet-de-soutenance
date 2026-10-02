@@ -9,9 +9,10 @@ use Illuminate\Http\Request;
 class DashboardapController extends Controller
 {
     public function dashboard_ap(){
-        $formations = Formation::with('formateur')
-                    ->latest()
-                    ->get();
+        $formations = Formation::where('statut', 'publie')
+            ->with('formateur')
+            ->latest()
+            ->get();
         return view('dashboard_ap', compact('formations'));
     }
 
@@ -19,10 +20,14 @@ class DashboardapController extends Controller
 
     public function details_formations($id)
     {
-        $formation = Formation::with([
-            'formateur.user',
-            'modules.lecons'
-        ])->findOrFail($id);
+        
+
+         $formation = Formation::where('statut', 'publie')
+            ->with([
+                'formateur.user',
+                'modules.lecons'
+            ])
+            ->findOrFail($id);
 
         $inscription = null;
 

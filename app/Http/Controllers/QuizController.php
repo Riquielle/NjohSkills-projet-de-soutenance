@@ -80,7 +80,11 @@ class QuizController extends Controller
             'source'=>'manuel'
 
         ]);
-        $formation->verifierPublication();
+        $formation = $module->formation;
+
+        if ($formation) {
+            $formation->verifierPublication();
+        }
         
         return back()->with('success',
             'Quiz créé avec succès.');

@@ -53,17 +53,81 @@
 									<p class="invalid-feedback">{{$message}}</p>
 								@enderror
 							</div>
-							<div class="form-group">
-								<label for="password">mot de passe</label>
-								<input type="password" id="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Mot de passe">
+							<div class="form-group position-relative">
+								<label for="password">Mot de passe</label>
+
+								<input type="password"
+									id="password"
+									class="form-control @error('password') is-invalid @enderror"
+									name="password"
+									placeholder="Mot de passe"
+									style="padding-right: 45px;">
+
+								<span onclick="togglePassword('password', 'eyePassword')"
+									style="position: absolute; right: 15px; top: 38px; cursor: pointer; z-index: 10;">
+									<i class="fa fa-eye" id="eyePassword"></i>
+								</span>
+
 								@error('password')
-									<p class="invalid-feedback">{{$message}}</p>
+									<p class="invalid-feedback">{{ $message }}</p>
 								@enderror
+								
+
+								 <div id="passwordHelp" class="mt-2 small">
+									<div id="lengthRule" class="text-danger">
+										✗ Au moins 8 caractères
+									</div>
+
+									<div id="uppercaseRule" class="text-danger">
+										✗ Une lettre majuscule
+									</div>
+
+									<div id="lowercaseRule" class="text-danger">
+										✗ Une lettre minuscule
+									</div>
+
+									<div id="numberRule" class="text-danger">
+										✗ Un chiffre
+									</div>
+
+									<div id="symbolRule" class="text-danger">
+										✗ Un caractère spécial
+									</div>
+								</div>
 							</div>
-							<div class="form-group">
-								<label for="password">Confirmer le mot de passe</label>
-								<input type="password" id="password_confirmation" class="form-control requiredField input-label" name="password_confirmation" placeholder="Confirmer le mot de passe" >
+
+							<div class="form-group position-relative">
+								<label for="password_confirmation">Confirmer le mot de passe</label>
+
+								<input type="password"
+									id="password_confirmation"
+									class="form-control requiredField input-label"
+									name="password_confirmation"
+									placeholder="Confirmer le mot de passe"
+									style="padding-right: 45px;">
+
+								<span onclick="togglePassword('password_confirmation', 'eyeConfirmation')"
+									style="position: absolute; right: 15px; top: 38px; cursor: pointer; z-index: 10;">
+									<i class="fa fa-eye" id="eyeConfirmation"></i>
+								</span>
 							</div>
+
+							<script>
+							function togglePassword(inputId, iconId) {
+								const input = document.getElementById(inputId);
+								const icon = document.getElementById(iconId);
+
+								if (input.type === "password") {
+									input.type = "text";
+									icon.classList.remove("fa-eye");
+									icon.classList.add("fa-eye-slash");
+								} else {
+									input.type = "password";
+									icon.classList.remove("fa-eye-slash");
+									icon.classList.add("fa-eye");
+								}
+							}
+							</script>
 							<div class="form-group">
 								<label for="telephone">Téléphone</label>
 								<input type="number" value="{{ old('telephone') }}" id="telephone" class=" form-control @error('telephone') is-invalid @enderror" name="telephone" placeholder="Téléphone">
@@ -114,5 +178,41 @@
 		</div><!--- END CONTAINER -->
 	</section>
 	<!-- END LOGIN AND REGISTER -->
+
+	<script>
+		document.getElementById('password').addEventListener('input', function () {
+
+			const password = this.value;
+
+			const rules = {
+				length: password.length >= 8,
+				uppercase: /[A-Z]/.test(password),
+				lowercase: /[a-z]/.test(password),
+				number: /[0-9]/.test(password),
+				symbol: /[^A-Za-z0-9]/.test(password)
+			};
+
+			updateRule('lengthRule', rules.length, 'Au moins 8 caractères');
+			updateRule('uppercaseRule', rules.uppercase, 'Une lettre majuscule');
+			updateRule('lowercaseRule', rules.lowercase, 'Une lettre minuscule');
+			updateRule('numberRule', rules.number, 'Un chiffre');
+			updateRule('symbolRule', rules.symbol, 'Un caractère spécial');
+		});
+
+		function updateRule(id, valid, text) {
+
+			const element = document.getElementById(id);
+
+			if (valid) {
+				element.textContent = '✓ ' + text;
+				element.classList.remove('text-danger');
+				element.classList.add('text-success');
+			} else {
+				element.textContent = '✗ ' + text;
+				element.classList.remove('text-success');
+				element.classList.add('text-danger');
+			}
+		}
+	</script>
 		
 @stop

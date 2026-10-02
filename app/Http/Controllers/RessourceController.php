@@ -67,7 +67,11 @@ class RessourceController extends Controller
 
         ]);
 
-        $formation->verifierPublication();
+        $formation = $lecon->module->formation;
+
+        if ($formation) {
+            $formation->verifierPublication();
+        }
         return redirect()
                 ->back()
                 ->with('success', 'Ressource ajoutée avec succès.');

@@ -53,13 +53,46 @@
 							@enderror
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group position-relative">
                             <label>Mot de passe</label>
-                            <input type="password" class="form-control @error('password') is-invalid @enderror" name="password"  placeholder="password">
-							@error('password')
-								<p class="invalid-feedback">{{ $message }}</p>
-							@enderror
+
+                            <input type="password"
+                                class="form-control @error('password') is-invalid @enderror"
+                                name="password"
+                                id="password"
+                                placeholder="Mot de passe"
+                                style="padding-right: 45px;">
+
+                            <span onclick="togglePassword()"
+                                style="position: absolute;
+                                        right: 15px;
+                                        top: 38px;
+                                        cursor: pointer;
+                                        z-index: 10;">
+                                <i class="fa fa-eye" id="eyeIcon"></i>
+                            </span>
+
+                            @error('password')
+                                <p class="invalid-feedback">{{ $message }}</p>
+                            @enderror
                         </div>
+
+                        <script>
+                        function togglePassword() {
+                            const password = document.getElementById('password');
+                            const eyeIcon = document.getElementById('eyeIcon');
+
+                            if (password.type === 'password') {
+                                password.type = 'text';
+                                eyeIcon.classList.remove('fa-eye');
+                                eyeIcon.classList.add('fa-eye-slash');
+                            } else {
+                                password.type = 'password';
+                                eyeIcon.classList.remove('fa-eye-slash');
+                                eyeIcon.classList.add('fa-eye');
+                            }
+                        }
+                        </script>
 
                         <div class="form-group col-lg-12">
                             <button class="btn_one" type="submit">
