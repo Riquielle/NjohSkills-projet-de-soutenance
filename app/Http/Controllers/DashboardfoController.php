@@ -61,6 +61,16 @@ class DashboardfoController extends Controller
 
         });
 
+                // Certificats des apprenants ayant terminé leur formation
+        $certificats = Inscription::whereIn(
+            'formation_id',
+            $formations->pluck('id')
+        )
+            ->where('statut', 'valide')
+            ->where('progression', '>=', 100)
+            ->with('user', 'formation')
+            ->latest('updated_at')
+            ->get();
 
 
 
@@ -73,6 +83,7 @@ class DashboardfoController extends Controller
                 'formationsTotal',
                 'apprenantsTotal',
                 'revenus',
+                'certificats'
                 
             )
         );

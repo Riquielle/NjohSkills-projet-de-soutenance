@@ -13,34 +13,10 @@
 				  </div><!--- END COL -->
 				  <div class="col-lg-6 col-sm-12 col-xs-12">
 					<div class="hero-text-img">
-						<img src="assets/img/home-img2.png" class="img-fluid" alt="" />
-						<div class="home_ps">
+						
+						
 
-							<span class="ti-user"></span>
-
-							<h2>
-								{{ $nombreApprenants }}
-							</h2>
-
-							<p>
-								Apprenants inscrits
-							</p>
-
-						</div>
-
-						<div class="home_ps">
-
-							<span class="ti-book"></span>
-
-							<h2>
-								{{ $nombreFormations }}
-							</h2>
-
-							<p>
-								Formations pratiques
-							</p>
-
-						</div>
+						
 					</div>					
 				  </div><!--- END COL -->						  
 				</div><!--- END ROW -->
@@ -109,6 +85,24 @@
 
 							<p>
 								Formateurs experts
+							</p>
+
+						</div>
+
+					</div>
+
+                    <div class="col-lg-3 col-sm-6 col-xs-12">
+
+						<div class="single-counter">
+
+							<span class="ti-user sc_four"></span>
+
+							<h2 class="counter-num">
+								{{ $nombreApprenants }}
+							</h2>
+
+							<p>
+								Apprenants Inscrits
 							</p>
 
 						</div>

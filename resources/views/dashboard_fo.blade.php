@@ -82,6 +82,19 @@
 
             </div>
 
+            <div class="card border-0 shadow-sm mb-4 bg-light">
+                <div class="card-body d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+                    <div>
+                        <h5 class="mb-1"><i class="fas fa-robot text-success me-2"></i>Assistant IA formateur</h5>
+                        <p class="text-muted mb-0">Préparez un quiz, un examen blanc, un plan de cours ou un guide de séance. Validez toujours le contenu avant diffusion.</p>
+                    </div>
+                    <div class="d-flex gap-2 flex-wrap">
+                        <a href="{{ route('assistant_formateur') }}" class="btn btn-outline-success">Ouvrir l’espace IA</a>
+                        <button type="button" class="btn btn-success" data-assistant-toggle>Demander à l’IA</button>
+                    </div>
+                </div>
+            </div>
+
             <!-- STATS -->
             <div class="row mb-4">
 
@@ -249,52 +262,58 @@
             </div>
 
             <!-- 🔥 CERTIFICATS -->
-            <div class="card shadow border-0">
+           <div class="card shadow border-0">
+    <div class="card-header bg-white">
+        <h5>Certificats délivrés</h5>
+    </div>
 
-                <div class="card-header bg-white">
-                    <h5>Certificats délivrés</h5>
-                </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Apprenant</th>
+                        <th>Formation</th>
+                        <th>Date</th>
+                        <th>Statut</th>
+                    </tr>
+                </thead>
 
-                <div class="card-body">
+                <tbody>
+                    @forelse ($certificats as $certificat)
+                        <tr>
+                            <td>
+                                {{ $certificat->user->name ?? 'Non renseigné' }}
+                            </td>
 
-                    <table class="table table-hover">
+                            <td>
+                                {{ $certificat->formation->titre ?? 'Non renseignée' }}
+                            </td>
 
-                        <thead>
-                            <tr>
-                                <th>Apprenant</th>
-                                <th>Formation</th>
-                                <th>Date</th>
-                                <th>Statut</th>
-                            </tr>
-                        </thead>
+                            <td>
+                                {{ $certificat->created_at
+                                    ? $certificat->created_at->format('d/m/Y')
+                                    : 'Non renseignée' }}
+                            </td>
 
-                        <tbody>
-
-                            <tr>
-                                <td>Marie</td>
-                                <td>Couture Débutant</td>
-                                <td>17/06/2026</td>
-                                <td>
-                                    <span class="badge bg-primary">Téléchargé</span>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>Sonia</td>
-                                <td>Coiffure Moderne</td>
-                                <td>15/06/2026</td>
-                                <td>
-                                    <span class="badge bg-warning">En attente</span>
-                                </td>
-                            </tr>
-
-                        </tbody>
-
-                    </table>
-
-                </div>
-
-            </div>
+                            <td>
+                                <span class="badge bg-success">
+                                    Délivré
+                                </span>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="4" class="text-center text-muted">
+                                Aucun certificat délivré pour le moment.
+                            </td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
         </div>
 

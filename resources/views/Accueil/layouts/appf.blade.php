@@ -250,6 +250,22 @@
             max-width: 100%;
         }
 
+        .main-content img,
+        .main-content video,
+        .main-content iframe {
+            max-width: 100%;
+            height: auto;
+        }
+
+        @media (max-width: 575.98px) {
+            .main-content .container,
+            .main-content .container-fluid { padding-left: .75rem; padding-right: .75rem; }
+            .main-content .btn { white-space: normal; }
+            .main-content .modal-dialog { margin: .5rem; }
+            .main-content .input-group { flex-wrap: wrap; }
+            .main-content .input-group > .form-control { width: 100%; flex: 1 0 100%; }
+        }
+
 
         /* =====================================================
            TABLETTES
@@ -354,365 +370,326 @@
             }
         }
 
+        /* =========================================================
+   MENU MOBILE TYPE APPLICATION
+   ========================================================= */
 
-        /* =====================================================
-           TÉLÉPHONES
-           576px → 767px
-           ===================================================== */
+/* Barre mobile cachée sur ordinateur */
+.mobile-navbar {
+    display: none;
+}
 
-        @media (max-width: 767px) {
+.sidebar-overlay {
+    display: none;
+}
 
-            .wrapper {
-                display: block;
-                width: 100%;
-            }
 
+/* =========================================================
+   MOBILE
+   ========================================================= */
 
-            /* ---------------------------------------------
-               SIDEBAR MOBILE
-               --------------------------------------------- */
+@media (max-width: 767px) {
 
-            .sidebar {
-                position: relative;
-                top: auto;
-                left: auto;
+    /* -----------------------------------------
+       BARRE DU HAUT MOBILE
+       ----------------------------------------- */
 
-                width: 100%;
-                min-width: 100%;
-                min-height: auto;
+    .mobile-navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 64px;
 
-                overflow: visible;
-            }
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
 
-            .sidebar-header {
-                width: 100%;
-                padding: 15px 20px;
+        padding: 0 16px;
 
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
+        background: #ffffff;
 
-            .sidebar-header .navbar-brand {
-                font-size: 26px !important;
-            }
+        box-shadow: 0 2px 10px rgba(0,0,0,0.08);
 
-            .sidebar-menu {
-                width: 100%;
-                padding: 5px 15px 15px;
+        z-index: 2000;
+    }
 
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
 
-                gap: 5px;
-            }
+    /* LOGO MOBILE */
 
-            .sidebar-menu li {
-                width: auto;
-                margin: 0;
-            }
+    .mobile-logo {
+        font-size: 25px;
+        font-weight: 700;
+        text-decoration: none;
+        white-space: nowrap;
+    }
 
-            .sidebar-menu li a {
-                width: auto;
-                padding: 9px 10px;
 
-                font-size: 13px;
+    /* BOUTON HAMBURGER */
 
-                justify-content: center;
-                gap: 6px;
-            }
+    .mobile-menu-btn {
+        width: 44px;
+        height: 44px;
 
-            .sidebar-menu li a i {
-                width: auto;
-                min-width: auto;
-            }
+        border: none;
+        border-radius: 10px;
 
-            .sidebar-menu li a.logout {
-                margin-top: 0;
-            }
+        background: #004085;
+        color: white;
 
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-            /* ---------------------------------------------
-               MAIN CONTENT
-               --------------------------------------------- */
+        font-size: 20px;
 
-            .main-content {
-                width: 100%;
-                min-width: 100%;
-                margin-left: 0;
-            }
+        cursor: pointer;
 
+        transition: 0.3s ease;
+    }
 
-            /* ---------------------------------------------
-               TOPBAR
-               --------------------------------------------- */
+    .mobile-menu-btn:hover {
+        background: #003366;
+    }
 
-            .topbar {
-                width: 100%;
 
-                padding: 12px 15px;
+    /* -----------------------------------------
+       SIDEBAR MOBILE
+       ----------------------------------------- */
 
-                min-height: 60px;
+    .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
 
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
+    width: 280px;
+    min-width: 280px;
+    height: 100vh;
 
-                gap: 10px;
-            }
+    z-index: 3000;
 
-            .topbar h4 {
-                font-size: 17px;
-                margin: 0;
-            }
+    transform: translateX(-100%);
 
-            .topbar-right {
-                gap: 8px;
-            }
+    transition: transform 0.3s ease;
 
-            .profile-img {
-                width: 35px;
-                height: 35px;
-            }
+    overflow-y: auto;
+}
 
+.sidebar.mobile-open {
+    transform: translateX(0);
+}
 
-            /* ---------------------------------------------
-               NOTIFICATIONS
-               --------------------------------------------- */
 
-            .topbar .dropdown-menu {
-                position: absolute !important;
+    /* -----------------------------------------
+       EN-TÊTE SIDEBAR
+       ----------------------------------------- */
 
-                width: 320px !important;
-                max-width: calc(100vw - 30px) !important;
+    .sidebar-header {
+        padding: 25px 20px;
+    }
 
-                max-height: 70vh;
 
-                overflow-y: auto;
-            }
+    .sidebar-header .navbar-brand {
+        font-size: 28px !important;
+    }
 
-            .topbar .dropdown-item {
-                padding: 12px !important;
-            }
 
-            .topbar .dropdown-item .d-flex {
-                align-items: flex-start;
-            }
+    /* -----------------------------------------
+       MENU
+       ----------------------------------------- */
 
+    .sidebar-menu {
+        display: block;
 
-            /* ---------------------------------------------
-               CONTENU
-               --------------------------------------------- */
+        width: 100%;
 
-            .main-content .container,
-            .main-content .container-fluid {
-                width: 100%;
-                max-width: 100%;
-                padding-left: 12px;
-                padding-right: 12px;
-            }
+        padding: 15px;
+    }
 
-            .main-content .row {
-                margin-left: 0;
-                margin-right: 0;
-            }
 
-            .main-content .card {
-                margin-bottom: 15px;
-            }
+    .sidebar-menu li {
+        width: 100%;
+        margin-bottom: 6px;
+    }
 
-            .main-content h1 {
-                font-size: 25px;
-            }
 
-            .main-content h2 {
-                font-size: 22px;
-            }
+    .sidebar-menu li a {
+        width: 100%;
 
-            .main-content h3 {
-                font-size: 20px;
-            }
+        padding: 14px 15px;
 
-            .main-content h4 {
-                font-size: 18px;
-            }
+        display: flex;
+        align-items: center;
 
-            .main-content h5 {
-                font-size: 17px;
-            }
+        gap: 12px;
 
-            .main-content h6 {
-                font-size: 16px;
-            }
-        }
+        font-size: 14px;
+    }
 
 
-        /* =====================================================
-           PETITS TÉLÉPHONES
-           max-width: 575px
-           ===================================================== */
+    .sidebar-menu li a i {
+        width: 22px;
+        min-width: 22px;
 
-        @media (max-width: 575px) {
+        text-align: center;
 
-            .sidebar-header {
-                padding: 12px 15px;
-            }
+        font-size: 16px;
+    }
 
-            .sidebar-header .navbar-brand {
-                font-size: 24px !important;
-            }
 
-            .sidebar-menu {
-                padding: 5px 10px 12px;
-                gap: 4px;
-            }
+    /* -----------------------------------------
+       OVERLAY
+       ----------------------------------------- */
 
-            .sidebar-menu li {
-                width: 48%;
-            }
+    .sidebar-overlay {
+    position: fixed;
+    inset: 0;
 
-            .sidebar-menu li a {
-                width: 100%;
-                padding: 9px 6px;
+    width: 100vw;
+    height: 100vh;
 
-                font-size: 12px;
+    background: rgba(0, 0, 0, 0.35);
 
-                text-align: center;
-            }
+    z-index: 2500;
 
-            .sidebar-menu li a i {
-                font-size: 13px;
-            }
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
 
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
 
-            /* ---------------------------------------------
-               TOPBAR
-               --------------------------------------------- */
+.sidebar-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
 
-            .topbar {
-                padding: 10px 12px;
-            }
+    /* -----------------------------------------
+       CONTENU PRINCIPAL
+       ----------------------------------------- */
 
-            .topbar h4 {
-                font-size: 16px;
-            }
+    .wrapper {
+        display: block;
 
-            .topbar-right {
-                gap: 6px;
-            }
+        width: 100%;
+    }
 
-            .topbar-right .btn {
-                padding: 7px 9px;
-            }
 
-            .profile-img {
-                width: 32px;
-                height: 32px;
-            }
+    .main-content {
 
+        width: 100%;
+        min-width: 100%;
 
-            /* ---------------------------------------------
-               NOTIFICATIONS
-               --------------------------------------------- */
+        margin-left: 0;
 
-            .topbar .dropdown-menu {
-                width: calc(100vw - 24px) !important;
-                max-width: calc(100vw - 24px) !important;
+        padding-top: 64px;
+    }
 
-                left: auto !important;
-                right: 0 !important;
-            }
 
-            .topbar .dropdown-menu .p-3 {
-                padding: 12px !important;
-            }
+    /* -----------------------------------------
+       TOPBAR
+       ----------------------------------------- */
 
-            .topbar .dropdown-item {
-                padding: 10px !important;
-            }
+    .topbar {
 
-            .topbar .dropdown-item .me-3 {
-                margin-right: 8px !important;
-            }
+        min-height: 60px;
 
-            .topbar .dropdown-item small {
-                font-size: 12px;
-                line-height: 1.4;
-            }
+        padding: 10px 15px;
 
+        gap: 10px;
+    }
 
-            /* ---------------------------------------------
-               CONTENU
-               --------------------------------------------- */
 
-            .main-content .container,
-            .main-content .container-fluid {
-                padding-left: 10px;
-                padding-right: 10px;
-            }
+    .topbar h4 {
+        font-size: 17px;
+    }
 
-            .main-content h1 {
-                font-size: 23px;
-            }
 
-            .main-content h2 {
-                font-size: 21px;
-            }
+    .topbar-right {
+        gap: 8px;
+    }
 
-            .main-content h3 {
-                font-size: 19px;
-            }
 
-            .main-content p {
-                font-size: 14px;
-            }
+    .profile-img {
+        width: 35px;
+        height: 35px;
+    }
 
-            .main-content .btn {
-                max-width: 100%;
-            }
-        }
+}
 
 
-        /* =====================================================
-           TRÈS PETITS TÉLÉPHONES
-           max-width: 400px
-           ===================================================== */
+/* =========================================================
+   PETITS TÉLÉPHONES
+   ========================================================= */
 
-        @media (max-width: 400px) {
+@media (max-width: 480px) {
 
-            .sidebar-header .navbar-brand {
-                font-size: 22px !important;
-            }
+    .mobile-navbar {
+        height: 60px;
 
-            .sidebar-menu li {
-                width: 100%;
-            }
+        padding: 0 12px;
+    }
 
-            .sidebar-menu li a {
-                justify-content: flex-start;
-                padding-left: 15px;
-            }
 
-            .topbar h4 {
-                font-size: 15px;
-            }
+    .mobile-logo {
+        font-size: 23px;
+    }
 
-            .topbar {
-                padding: 9px 10px;
-            }
 
-            .profile-img {
-                width: 30px;
-                height: 30px;
-            }
+    .mobile-menu-btn {
+        width: 40px;
+        height: 40px;
 
-            .topbar .dropdown-menu {
-                width: calc(100vw - 20px) !important;
-                max-width: calc(100vw - 20px) !important;
-            }
-        }
+        font-size: 18px;
+    }
 
+
+    .sidebar {
+        width: 270px;
+        min-width: 270px;
+    }
+
+
+    .main-content {
+        padding-top: 60px;
+    }
+
+
+    .topbar {
+        padding: 9px 12px;
+    }
+
+
+    .topbar h4 {
+        font-size: 16px;
+    }
+
+}
+
+
+/* =========================================================
+   TRÈS PETITS ÉCRANS
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+    .sidebar {
+        width: 255px;
+        min-width: 255px;
+    }
+
+
+    .mobile-logo {
+        font-size: 21px;
+    }
+
+}
+
+       
+
+
+       
 
         /* =====================================================
            ÉVITER LES DÉBORDEMENTS
@@ -739,7 +716,37 @@
             white-space: normal;
         }
 
+
+        /* =========================================================
+   EFFET FLOU DU CONTENU QUAND LE MENU MOBILE EST OUVERT
+   ========================================================= */
+
+        @media (max-width: 767px) {
+
+            .main-content {
+                transition: filter 0.3s ease, transform 0.3s ease;
+            }
+
+            body.menu-open .main-content {
+                filter: blur(4px);
+                transform: scale(0.995);
+            }
+
+            .sidebar-overlay {
+                background: rgba(0, 0, 0, 0.30);
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+            }
+
+            .sidebar-overlay.active {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+
     </style>
+
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 </head>
 
@@ -748,6 +755,23 @@
 
 <div class="wrapper">
 
+
+
+        <!-- BARRE MOBILE -->
+    <div class="mobile-navbar">
+
+        <a href="/" class="mobile-logo">
+            <span style="color:#004085;">Skill</span><span style="color:#28a745;">Ora</span>
+        </a>
+
+        <button type="button" class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+        </button>
+
+    </div>
+
+    <!-- FOND SOMBRE -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
     <!-- =====================================================
          SIDEBAR
@@ -827,6 +851,17 @@
                 </a>
             </li>
 
+            <li>
+                <a class="{{ request()->routeIs('assistant_formateur') ? 'active' : '' }}"
+                   href="{{ route('assistant_formateur') }}">
+
+                    <i class="fas fa-robot"></i>
+
+                    <span>Assistant IA</span>
+
+                </a>
+            </li>
+
 
             <li>
                 <a class="{{ request()->routeIs('profil_formateur') ? 'active' : '' }}"
@@ -870,7 +905,7 @@
         <div class="topbar">
 
             <div>
-                <h4>Tableau de bord</h4>
+                <h4></h4>
             </div>
 
 
@@ -1036,6 +1071,129 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
 </script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    const menuBtn = document.getElementById('mobileMenuBtn');
+    const sidebar = document.querySelector('.sidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+
+    if (!menuBtn || !sidebar) {
+        return;
+    }
+
+
+    /* ==========================================
+       OUVRIR LE MENU
+       ========================================== */
+
+    menuBtn.addEventListener('click', function (event) {
+
+        event.stopPropagation();
+
+        sidebar.classList.add('mobile-open');
+
+        if (overlay) {
+            overlay.classList.add('active');
+        }
+
+        document.body.classList.add('menu-open');
+
+        document.body.style.overflow = 'hidden';
+
+    });
+
+
+    /* ==========================================
+       FERMER LE MENU
+       ========================================== */
+
+    function closeSidebar() {
+
+        sidebar.classList.remove('mobile-open');
+
+        if (overlay) {
+            overlay.classList.remove('active');
+        }
+
+        document.body.classList.remove('menu-open');
+
+        document.body.style.overflow = '';
+
+    }
+
+
+    /* ==========================================
+       APPUYER N'IMPORTE OÙ SUR L'ÉCRAN
+       ========================================== */
+
+    document.addEventListener('click', function (event) {
+
+        if (!sidebar.classList.contains('mobile-open')) {
+            return;
+        }
+
+        /*
+         * Si le menu est ouvert et qu'on touche
+         * n'importe où, on ferme le menu.
+         *
+         * Le bouton hamburger est exclu.
+         */
+
+        if (!menuBtn.contains(event.target)) {
+            closeSidebar();
+        }
+
+    });
+
+
+    /* ==========================================
+       TOUCHER L'ÉCRAN SUR MOBILE
+       ========================================== */
+
+    document.addEventListener('touchstart', function (event) {
+
+        if (!sidebar.classList.contains('mobile-open')) {
+            return;
+        }
+
+        if (!menuBtn.contains(event.target)) {
+            closeSidebar();
+        }
+
+    }, { passive: true });
+
+
+    /* ==========================================
+       RETOUR À L'ÉCRAN DESKTOP
+       ========================================== */
+
+    window.addEventListener('resize', function () {
+
+        if (window.innerWidth > 767) {
+
+            closeSidebar();
+
+        }
+
+    });
+
+});
+</script>
+
+<script>
+document.querySelectorAll('.main-content table').forEach((table) => {
+    if (!table.parentElement.classList.contains('table-responsive')) {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'table-responsive';
+        table.parentNode.insertBefore(wrapper, table);
+        wrapper.appendChild(table);
+    }
+});
+</script>
+
+@include('components.assistant-panel')
 
 </body>
 

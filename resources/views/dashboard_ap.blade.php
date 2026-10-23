@@ -200,4 +200,16 @@
 
 </section>
 
+<!-- Accès rapide à l'assistant pédagogique -->
+<button type="button"
+   class="btn btn-primary rounded-circle shadow position-fixed bottom-0 end-0 m-4 d-flex align-items-center justify-content-center"
+   style="width: 58px; height: 58px; z-index: 1050;"
+   title="Ouvrir l'assistant IA"
+   aria-label="Ouvrir l'assistant IA"
+   data-assistant-toggle>
+    <i class="fas fa-robot fs-4" aria-hidden="true"></i>
+</button>
+
+@include('components.assistant-panel')
+
 @endsection

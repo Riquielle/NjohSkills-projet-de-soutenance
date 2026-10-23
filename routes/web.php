@@ -213,10 +213,21 @@ Route::group(['middleware' => 'auth'],function () {
         [AssistantIAController::class,'assistant_ia']
     )->name('assistant_ia');
 
+    Route::get('/formateur/assistant-ia',
+        [AssistantIAController::class, 'assistantFormateur']
+    )->name('assistant_formateur');
+
+    Route::get('/assistant_ia/messages',
+        [AssistantIAController::class, 'messages']
+    )->name('assistant_messages');
 
     Route::post('/assistant_ia/message',
         [AssistantIAController::class,'assistant_message']
     )->name('assistant_message');
+
+    Route::patch('/assistant_ia/messages/{message}',
+        [AssistantIAController::class, 'modifierMessage']
+    )->name('assistant_message_update');
 
     Route::get('/formateur/apprenants',
         [DashboardfoController::class,'mes_apprenants']

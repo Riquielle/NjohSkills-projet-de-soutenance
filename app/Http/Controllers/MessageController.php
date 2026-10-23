@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\MessageEnvoye;
 use App\Models\Message;
 use App\Models\Formateur;
 use App\Models\User;
@@ -17,6 +18,10 @@ class MessageController extends Controller
     {
         $user = Auth::user();
 
+
+        if (!$user) {
+            return redirect()->route('sign_in');
+        }
         /*
         |--------------------------------------------------------------------------
         | APPRENANT
@@ -226,13 +231,16 @@ class MessageController extends Controller
                 );
             }
 
-            Message::create([
+           
+            $message = Message::create([
                 'apprenant_id' => $user->id,
                 'formateur_id' => $request->formateur_id,
                 'expediteur_id' => $user->id,
                 'message' => $request->message,
                 'lu' => false,
             ]);
+
+            broadcast(new MessageEnvoye($message));
 
             return back()->with(
                 'success',
@@ -282,13 +290,15 @@ class MessageController extends Controller
                 );
             }
 
-            Message::create([
+            $message = Message::create([
                 'apprenant_id' => $request->apprenant_id,
                 'formateur_id' => $formateur->id,
                 'expediteur_id' => $user->id,
                 'message' => $request->message,
                 'lu' => false,
             ]);
+
+            broadcast(new MessageEnvoye($message));
 
             return back()->with(
                 'success',

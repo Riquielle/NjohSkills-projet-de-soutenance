@@ -314,35 +314,364 @@
     /* =========================
        RESPONSIVE
     ========================= */
+    /* =========================
+   RESPONSIVE
+========================= */
+
+/* =========================
+   TABLETTES
+========================= */
+
+    @media (max-width: 991px) {
+
+        .messagerie-wrapper {
+            padding: 25px 12px;
+        }
+
+        .messagerie-card {
+            height: 650px;
+        }
+
+        .contacts-panel {
+            border-right: 1px solid #e9edf5;
+        }
+
+        .contacts-header {
+            padding: 18px 15px;
+        }
+
+        .contact-item {
+            padding: 13px 12px;
+        }
+
+        .contact-avatar {
+            width: 42px;
+            height: 42px;
+            min-width: 42px;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        .contact-name {
+            font-size: 14px;
+        }
+
+        .contact-specialite {
+            font-size: 11px;
+        }
+
+        .conversation-header {
+            padding: 12px 18px;
+        }
+
+        .messages-container {
+            padding: 20px;
+        }
+
+        .message-bubble {
+            max-width: 80%;
+        }
+    }
+
+
+    /* =========================
+    TELEPHONES
+    ========================= */
 
     @media (max-width: 767px) {
 
         .messagerie-wrapper {
-            padding: 15px 8px;
+            padding: 10px 5px;
+            min-height: calc(100vh - 80px);
         }
 
         .messagerie-card {
+            width: 100%;
             height: auto;
-            min-height: 750px;
+            min-height: 0;
+            margin: 0;
             border-radius: 12px;
+            overflow: hidden;
         }
 
+        .messagerie-card > .row {
+            height: auto !important;
+        }
+
+
+        /* =====================
+        LISTE DES FORMATEURS
+        ===================== */
+
         .contacts-panel {
-            height: 260px;
+            height: 230px;
             border-right: none;
             border-bottom: 1px solid #e9edf5;
         }
 
-        .contact-list {
-            height: 178px;
+        .contacts-header {
+            padding: 15px 16px;
         }
 
+        .contacts-header h5 {
+            font-size: 18px;
+        }
+
+        .contacts-header small {
+            font-size: 12px;
+        }
+
+        .contact-list {
+            height: 165px;
+            overflow-y: auto;
+        }
+
+        .contact-item {
+            padding: 11px 13px;
+        }
+
+        .contact-avatar {
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            font-size: 15px;
+            margin-right: 10px;
+        }
+
+        .contact-name {
+            font-size: 14px;
+            max-width: 150px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .contact-specialite {
+            font-size: 11px;
+            max-width: 180px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+
+        /* =====================
+        CONVERSATION
+        ===================== */
+
         .conversation-panel {
-            height: 500px;
+            height: 560px;
+            min-height: 560px;
+        }
+
+        .conversation-header {
+            min-height: 70px;
+            padding: 12px 14px;
+            gap: 8px;
+        }
+
+        .conversation-avatar {
+            width: 42px;
+            height: 42px;
+            min-width: 42px;
+            margin-right: 4px;
+            font-size: 15px;
+        }
+
+        .conversation-header h5 {
+            font-size: 15px;
+        }
+
+        .conversation-header small {
+            display: block;
+            max-width: 180px;
+            font-size: 11px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .conversation-header .btn {
+            width: 34px;
+            height: 34px;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+
+        /* =====================
+        MESSAGES
+        ===================== */
+
+        .messages-container {
+            padding: 15px 12px;
+        }
+
+        .message-row {
+            margin-bottom: 12px;
         }
 
         .message-bubble {
-            max-width: 85%;
+            max-width: 88%;
+            padding: 10px 13px;
+            font-size: 13px;
+            line-height: 1.45;
+        }
+
+        .message-time {
+            font-size: 10px;
+            margin-top: 4px;
+        }
+
+
+        /* =====================
+        FORMULAIRE
+        ===================== */
+
+        .message-form {
+            padding: 10px;
+        }
+
+        .message-input-wrapper {
+            padding: 4px 5px 4px 12px;
+        }
+
+        .message-input {
+            font-size: 13px;
+            padding: 8px 6px;
+            min-width: 0;
+        }
+
+        .send-button {
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+        }
+
+
+        /* =====================
+        ÉCRAN VIDE
+        ===================== */
+
+        .empty-conversation {
+            padding: 20px 15px;
+        }
+
+        .empty-icon {
+            width: 65px;
+            height: 65px;
+            font-size: 25px;
+            margin-bottom: 15px;
+        }
+
+        .empty-conversation h5 {
+            font-size: 16px;
+        }
+
+        .empty-conversation p {
+            font-size: 13px;
+            margin-bottom: 0;
+        }
+    }
+
+
+    /* =========================
+    PETITS TELEPHONES
+    ========================= */
+
+    @media (max-width: 480px) {
+
+        .messagerie-wrapper {
+            padding: 5px 3px;
+        }
+
+        .messagerie-card {
+            border-radius: 8px;
+        }
+
+        .contacts-panel {
+            height: 210px;
+        }
+
+        .contact-list {
+            height: 150px;
+        }
+
+        .contact-item {
+            padding: 9px 10px;
+        }
+
+        .contact-avatar {
+            width: 36px;
+            height: 36px;
+            min-width: 36px;
+            font-size: 14px;
+            margin-right: 8px;
+        }
+
+        .contact-name {
+            font-size: 13px;
+            max-width: 130px;
+        }
+
+        .contact-specialite {
+            font-size: 10px;
+            max-width: 145px;
+        }
+
+        .conversation-panel {
+            height: 520px;
+            min-height: 520px;
+        }
+
+        .conversation-header {
+            min-height: 65px;
+            padding: 10px;
+        }
+
+        .conversation-avatar {
+            width: 38px;
+            height: 38px;
+            min-width: 38px;
+        }
+
+        .conversation-header h5 {
+            font-size: 14px;
+        }
+
+        .conversation-header small {
+            max-width: 140px;
+        }
+
+        .messages-container {
+            padding: 12px 9px;
+        }
+
+        .message-bubble {
+            max-width: 92%;
+            padding: 9px 11px;
+            font-size: 12px;
+        }
+
+        .message-form {
+            padding: 8px;
+        }
+
+        .message-input-wrapper {
+            padding-left: 10px;
+        }
+
+        .message-input {
+            font-size: 12px;
+        }
+
+        .send-button {
+            width: 37px;
+            height: 37px;
+            min-width: 37px;
         }
     }
 </style>
@@ -536,7 +865,8 @@
                     <div class="message-form">
 
                         <form method="POST"
-                              action="{{ route('messages.envoyer') }}">
+                                action="{{ route('messages.envoyer') }}"
+                                id="messageForm">
 
                             @csrf
 
@@ -552,11 +882,12 @@
                             <div class="message-input-wrapper">
 
                                 <input type="text"
-                                       name="message"
-                                       class="message-input"
-                                       placeholder="Écrire un message..."
-                                       autocomplete="off"
-                                       required>
+                                    name="message"
+                                    id="messageInput"
+                                    class="message-input"
+                                    placeholder="Écrire un message..."
+                                    autocomplete="off"
+                                    required>
 
                                 <button type="submit"
                                         class="send-button">
@@ -599,5 +930,132 @@
     </div>
 
 </div>
+
+
+@if($formateur)
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    const messageForm = document.getElementById('messageForm');
+    const messageInput = document.getElementById('messageInput');
+
+    messageForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        if (messageForm.dataset.sending === 'true') {
+            return;
+        }
+
+        messageForm.dataset.sending = 'true';
+
+        const formData = new FormData(messageForm);
+
+        fetch(messageForm.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Erreur lors de l’envoi du message.');
+            }
+
+            messageInput.value = '';
+
+            setTimeout(() => {
+                messageForm.dataset.sending = 'false';
+            }, 500);
+        })
+        .catch(error => {
+            console.error(error);
+            messageForm.dataset.sending = 'false';
+        });
+    });
+
+    if (!window.Echo) {
+        console.error('Echo n’est pas chargé.');
+        return;
+    }
+
+    const apprenantId = {{ Auth::id() }};
+    const formateurId = {{ $formateur->id }};
+    const currentUserId = {{ Auth::id() }};
+
+    const messagesContainer = document.querySelector('.messages-container');
+
+    if (!messagesContainer) {
+        return;
+    }
+
+    window.Echo.private(`conversation.${apprenantId}.${formateurId}`)
+        .listen('.message.envoye', function (e) {
+
+            console.log('Nouveau message reçu :', e);
+
+            // Éviter d'afficher deux fois le même message
+            if (messagesContainer.querySelector(`[data-message-id="${e.id}"]`)) {
+                return;
+            }
+
+            // Supprimer le message "Aucun message"
+            const emptyConversation =
+                messagesContainer.querySelector('.empty-conversation');
+
+            if (emptyConversation) {
+                emptyConversation.remove();
+            }
+
+            // Ligne du message
+            const row = document.createElement('div');
+
+            row.className = e.expediteur_id == currentUserId
+                ? 'message-row sent'
+                : 'message-row received';
+
+            row.dataset.messageId = e.id;
+
+            // Bulle
+            const bubble = document.createElement('div');
+            bubble.className = 'message-bubble';
+
+            // Texte du message
+            const text = document.createTextNode(e.message);
+
+            // Heure
+            const time = document.createElement('span');
+            time.className = 'message-time';
+
+            const date = new Date(
+                e.created_at.replace(' ', 'T')
+            );
+
+            time.textContent = date.toLocaleTimeString('fr-FR', {
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+
+            // Construction
+            bubble.appendChild(text);
+            bubble.appendChild(time);
+
+            row.appendChild(bubble);
+
+            messagesContainer.appendChild(row);
+
+            // Descendre automatiquement vers le dernier message
+            messagesContainer.scrollTop =
+                messagesContainer.scrollHeight;
+        });
+
+    // Afficher directement le bas de la conversation
+    messagesContainer.scrollTop =
+        messagesContainer.scrollHeight;
+
+});
+</script>
+@endif
 
 @endsection

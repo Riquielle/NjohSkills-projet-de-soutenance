@@ -56,14 +56,16 @@
         </div>
 
         @if(!$quiz)
-
-            <button class="btn btn-primary"
-                    data-bs-toggle="modal"
-                    data-bs-target="#addQuiz">
-
-                + Créer le quiz
-
-            </button>
+            <div class="d-flex flex-wrap gap-2">
+                <a class="btn btn-outline-success" href="{{ route('assistant_formateur', ['preset' => 'Prépare un QCM modifiable pour le module « ' . $module->titre . ' ». Commence par me demander le nombre de questions, le niveau, le barème et la durée. Donne les bonnes réponses et des explications, mais ne publie rien automatiquement.']) }}">
+                    <i class="fas fa-robot me-1"></i> Générer avec l’IA
+                </a>
+                <button class="btn btn-primary"
+                        data-bs-toggle="modal"
+                        data-bs-target="#addQuiz">
+                    + Créer le quiz
+                </button>
+            </div>
 
         @endif
 
@@ -149,6 +151,10 @@
     + Ajouter une question
 
     </button>
+
+    <a class="btn btn-outline-success" href="{{ route('assistant_formateur', ['preset' => 'Propose de nouvelles questions QCM modifiables pour le module « ' . $module->titre . ' », avec réponses correctes, explications, niveau de difficulté et points.']) }}">
+        <i class="fas fa-robot me-1"></i> Générer des questions IA
+    </a>
 
     @php
 

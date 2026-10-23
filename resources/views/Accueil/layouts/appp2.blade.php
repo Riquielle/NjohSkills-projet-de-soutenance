@@ -20,6 +20,20 @@
     <style>
     body {
         background: #f5f7fb;
+        overflow-x: hidden;
+    }
+
+    img, video, iframe { max-width: 100%; height: auto; }
+    .content .card, .content .modal-dialog, .content .row { max-width: 100%; }
+    .content .d-flex { min-width: 0; }
+    .content .table-responsive { -webkit-overflow-scrolling: touch; }
+
+    @media (max-width: 575.98px) {
+        .content { padding: 12px; }
+        .content .btn { white-space: normal; }
+        .content .modal-dialog { margin: .5rem; }
+        .content .input-group { flex-wrap: wrap; }
+        .content .input-group > .form-control { width: 100%; flex: 1 0 100%; }
     }
 
     /* --- STYLE DESKTOP PAR DÉFAUT --- */
@@ -137,6 +151,8 @@
     }
 </style>
 
+@vite(['resources/css/app.css', 'resources/js/app.js'])
+
 </head>
 
 <body>
@@ -150,6 +166,16 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+document.querySelectorAll('.content table').forEach((table) => {
+    if (!table.parentElement.classList.contains('table-responsive')) {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'table-responsive';
+        table.parentNode.insertBefore(wrapper, table);
+        wrapper.appendChild(table);
+    }
+});
+</script>
 
 </body>
 

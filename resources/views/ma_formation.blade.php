@@ -285,6 +285,16 @@
 
                                                                             @endswitch
 
+                                                                            <div class="mt-3 pt-3 border-top">
+                                                                                <div class="small fw-semibold mb-2"><i class="fas fa-robot text-success me-1"></i>Étudier cette ressource avec l’IA</div>
+                                                                                <div class="btn-group btn-group-sm flex-wrap" role="group" aria-label="Aide IA pour la ressource">
+                                                                                    <a class="btn btn-outline-success" href="{{ route('assistant_ia', ['resource' => $ressource->id, 'action' => 'summary']) }}">Résumé</a>
+                                                                                    <a class="btn btn-outline-success" href="{{ route('assistant_ia', ['resource' => $ressource->id, 'action' => 'revision']) }}">Fiche</a>
+                                                                                    <a class="btn btn-outline-success" href="{{ route('assistant_ia', ['resource' => $ressource->id, 'action' => 'flashcards']) }}">Flashcards</a>
+                                                                                    <a class="btn btn-outline-success" href="{{ route('assistant_ia', ['resource' => $ressource->id, 'action' => 'quiz']) }}">Me tester</a>
+                                                                                </div>
+                                                                            </div>
+
                                                                         </div>
 
                                                                     </div>
@@ -760,5 +770,17 @@ document.querySelectorAll(".pdf-player").forEach(function(pdf){
     });
 });
 </script>
+
+<!-- Accès rapide à l'assistant pour poser une question sur la formation -->
+<button type="button"
+   class="btn btn-primary rounded-circle shadow position-fixed bottom-0 end-0 m-4 d-flex align-items-center justify-content-center"
+   style="width: 58px; height: 58px; z-index: 1050;"
+   title="Demander à l'assistant IA"
+   aria-label="Demander à l'assistant IA"
+   data-assistant-toggle>
+    <i class="fas fa-robot fs-4" aria-hidden="true"></i>
+</button>
+
+@include('components.assistant-panel')
 
 @endsection
