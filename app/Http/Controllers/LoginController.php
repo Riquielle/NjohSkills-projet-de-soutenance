@@ -129,7 +129,13 @@ class LoginController extends Controller
             $user->save();
 
             // Envoi de l'e-mail de vérification
-            $user->sendEmailVerificationNotification();
+            try {
+    $user->sendEmailVerificationNotification();
+} catch (\Throwable $e) {
+    \Illuminate\Support\Facades\Log::error(
+        'Échec de l’envoi de l’e-mail de vérification : ' . $e->getMessage()
+    );
+}
 
             return redirect()
                 ->route('sign_in')
@@ -190,8 +196,14 @@ class LoginController extends Controller
             $formateur->save();
 
             // Envoi de l'e-mail de vérification
-            $user->sendEmailVerificationNotification();
-
+            // Envoi de l'e-mail de vérification
+            try {
+                $user->sendEmailVerificationNotification();
+            } catch (\Throwable $e) {
+                \Illuminate\Support\Facades\Log::error(
+                    'Échec de l’envoi de l’e-mail de vérification du formateur : ' . $e->getMessage()
+                );
+            }
             return redirect()
                 ->route('sign_in')
                 ->with(
