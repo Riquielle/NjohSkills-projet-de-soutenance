@@ -135,6 +135,13 @@ class LoginController extends Controller
     \Illuminate\Support\Facades\Log::error(
         'Échec de l’envoi de l’e-mail de vérification : ' . $e->getMessage()
     );
+
+    return redirect()
+        ->route('sign_in')
+        ->with(
+            'error',
+            'Votre compte a été créé, mais l’e-mail de vérification n’a pas pu être envoyé. Réessayez depuis la page de vérification.'
+        );
 }
 
             return redirect()
@@ -203,6 +210,13 @@ class LoginController extends Controller
                 \Illuminate\Support\Facades\Log::error(
                     'Échec de l’envoi de l’e-mail de vérification du formateur : ' . $e->getMessage()
                 );
+
+                return redirect()
+                    ->route('sign_in')
+                    ->with(
+                        'error',
+                        'Votre compte a été créé, mais l’e-mail de vérification n’a pas pu être envoyé. Réessayez depuis la page de vérification.'
+                    );
             }
             return redirect()
                 ->route('sign_in')
