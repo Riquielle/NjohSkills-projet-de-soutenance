@@ -13,6 +13,10 @@ return Application::configure(basePath: dirname(__DIR__))
     )
 
     ->withMiddleware(function (Middleware $middleware): void {
+        // Render termine HTTPS avant de transmettre la requête à l'application.
+        // Faire confiance au proxy conserve le schéma HTTPS lors de la validation
+        // des URL signées, notamment les liens de vérification d'e-mail.
+        $middleware->trustProxies(at: '*');
 
         // Redirection des utilisateurs non connectés
         $middleware->redirectGuestsTo(function () {
