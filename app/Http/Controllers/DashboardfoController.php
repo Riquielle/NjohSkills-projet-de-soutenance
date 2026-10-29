@@ -17,22 +17,29 @@ class DashboardfoController extends Controller
     {
 
 
-        $user = Auth::user();
+    $user = Auth::user();
 
-        
+    // Vérifier que l'utilisateur est connecté
+    if (!$user) {
+        return redirect()->route('sign_in');
+    }
 
+    // Récupérer le profil du formateur
+    $formateur = $user->formateur;
 
-        $formateur = $user->formateur;
+    // Vérifier que le profil du formateur existe
+    if (!$formateur) {
+        abort(
+            403,
+            'Aucun profil formateur n’est associé à votre compte. Veuillez contacter l’administrateur.'
+        );
+    }
 
-
-
-        // Formations du formateur
-
-        $formations = $formateur
-            ->formations()
-            ->withCount('inscriptions')
-            ->get();
-
+    // Formations du formateur
+    $formations = $formateur
+        ->formations()
+        ->withCount('inscriptions')
+        ->get();
 
 
         // Nombre de formations
