@@ -69,10 +69,12 @@ class User extends Authenticatable implements MustVerifyEmail
             'password' => 'hashed',
         ];
     }
-    public function formateur()
-    {
-        return $this->hasOne(Formateur::class);
-    }
+    
+public function formateur()
+{
+    return $this->hasOne(Formateur::class, 'user_id', 'id');
+}
+
 
     public function inscriptions()
     {
