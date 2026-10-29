@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Formation;
 use App\Models\Inscription;
-use App\Models\paiement;
+use App\Models\Paiement;
 use Illuminate\Support\Str;
 
 use Illuminate\Http\Request;
@@ -45,10 +45,21 @@ class PaiementController extends Controller
             
             // Étape A : Création de l'inscription
             
+            
             $dateDebut = now();
 
-            $dateFin = $dateDebut->copy()->addDays($formation->duree);
+$duree = strtolower(trim($formation->duree));
 
+preg_match('/\d+/', $duree, $match);
+$nombre = isset($match[0]) ? (int) $match[0] : 1;
+
+if (str_contains($duree, 'semaine')) {
+    $dateFin = $dateDebut->copy()->addWeeks($nombre);
+} elseif (str_contains($duree, 'mois')) {
+    $dateFin = $dateDebut->copy()->addMonths($nombre);
+} else {
+    $dateFin = $dateDebut->copy()->addDays($nombre);
+}
             Inscription::create([
                 'user_id' => $user->id,
                 'formation_id' => $formation->id,
